@@ -1,0 +1,22 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+.navbar .logo{
+    width: 100px;
+    background-color: red;
+}
+.navbar li{
+    padding: 1em;
+}
+.navbar-links{
+    display: flex;
+}
+.navbar-links a{
+    text-decoration: none;
+    color: black;
+}
+.navbar-links a:hover{
+    color: rgb(1, 210, 142);
+}
