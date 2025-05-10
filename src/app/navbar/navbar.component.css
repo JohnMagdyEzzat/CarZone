@@ -1,3 +1,8 @@
+.navbar-container{
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
 .navbar{
     display: flex;
     justify-content: space-around;
@@ -5,7 +10,6 @@
 }
 .navbar .logo{
     width: 100px;
-    background-color: red;
 }
 .navbar li{
     padding: 1em;
@@ -15,7 +19,7 @@
 }
 .navbar-links a{
     text-decoration: none;
-    color: black;
+    color: white;
 }
 .navbar-links a:hover{
     color: rgb(1, 210, 142);

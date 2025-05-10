@@ -1,0 +1,46 @@
+.welcome-container {
+  height: 100vh;
+
+  border: 1px solid black;
+
+  background-image: url("/cars/Welcome.jpg");
+  background-position: top left;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20vh;
+}
+.welcome-text {
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  text-shadow: 2px 2px 0px rgb(32, 44, 45), 5px 4px 0px rgba(32, 44, 45, 0.15);
+  font-style: italic;
+
+  gap: 0.5em;
+}
+.welcome-text-container {
+  display: flex;
+}
+.space {
+  width: 50vw;
+}
+.welcome-header {
+  padding-top: 20vh;
+  color: white;
+  font-size: 30px;
+}
+
+.large {
+  font-size: 3em;
+}
+.medium {
+  font-size: 2em;
+  font-weight: bold;
+}
+.small {
+  font-size: 1.5em;
+}
