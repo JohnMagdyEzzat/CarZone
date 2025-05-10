@@ -1,6 +1,6 @@
 <div>
-  <app-welcome></app-welcome>
-  <app-services></app-services>
+  <app-welcome (scroller)="scrollTo(services)"></app-welcome>
+  <div #services><app-services></app-services></div>
   <app-top-cars></app-top-cars>
   <app-reviews></app-reviews>
   <app-contact-us></app-contact-us>
