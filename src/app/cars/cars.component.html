@@ -1,3 +1,18 @@
-<p>
-  cars works!
-</p>
+<div class="cars-container">
+  @for (car of cars; track car.id) {
+  <div class="card">
+    <img
+      [ngSrc]="car.main_image"
+      [alt]="car.model"
+      width="200"
+      height="200"
+      [placeholder]="car.main_image"
+    />
+
+    <p>{{ car.model }}</p>
+    <p>{{ car.year }}</p>
+    <p>{{ car.price }}</p>
+    <p>{{ car.doors }}</p>
+  </div>
+  }
+</div>

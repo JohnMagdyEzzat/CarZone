@@ -9,9 +9,9 @@ import { Observable } from 'rxjs';
 export class CarService {
   private apiURL = 'https://sunny-macaque-arguably.ngrok-free.app/api/cars';
   constructor(public http: HttpClient) {}
-  public getCars(): Observable<Car[]> {
+  public getCars(): Observable<{ data: Car[] }> {
     let defaultHeaders = new HttpHeaders();
     defaultHeaders = defaultHeaders.set('ngrok-skip-browser-warning', '69420');
-    return this.http.get<Car[]>(this.apiURL, { headers: defaultHeaders });
+    return this.http.get<{data: Car[]}>(this.apiURL, { headers: defaultHeaders });
   }
 }
