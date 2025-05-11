@@ -2,6 +2,8 @@
     position: fixed;
     width: 100%;
     z-index: 1;
+
+    transition: 0.4s;
 }
 .navbar{
     display: flex;
@@ -16,6 +18,7 @@
 }
 .navbar-links{
     display: flex;
+    align-items: center;
 }
 .navbar-links a{
     text-decoration: none;
@@ -23,4 +26,8 @@
 }
 .navbar-links a:hover{
     color: rgb(1, 210, 142);
+}
+.black-nav{
+    background-color: black;
+    color: white;
 }

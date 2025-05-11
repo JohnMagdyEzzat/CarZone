@@ -5,7 +5,7 @@ import { AboutComponent } from './about/about.component';
 import { CarDetailsComponent } from './car-details/car-details.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { HomeComponent } from './home/home.component';
-import { ServicesComponent } from './services/services.component';
+import { ServicesComponent } from './our-services/services.component';
 import { CarsComponent } from './cars/cars.component';
 
 export const routes: Routes = [
@@ -16,5 +16,5 @@ export const routes: Routes = [
   { path: 'cars', component: CarsComponent },
   { path: 'car-details/:carId', component: CarDetailsComponent },
   { path: 'contact', component: ContactUsComponent },
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
 ];

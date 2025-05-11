@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { TopCarsComponent } from './top-cars/top-cars.component';
-import { ServicesComponent } from '../services/services.component';
+import { ServicesComponent } from '../our-services/services.component';
 import { ReviewsComponent } from '../reviews/reviews.component';
 import { ContactUsComponent } from '../contact-us/contact-us.component';
 
