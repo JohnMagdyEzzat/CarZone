@@ -9,6 +9,7 @@ import { ServicesComponent } from './our-services/services.component';
 import { CarsComponent } from './cars/cars.component';
 
 export const routes: Routes = [
+  { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'about', component: AboutComponent },
@@ -16,5 +17,5 @@ export const routes: Routes = [
   { path: 'cars', component: CarsComponent },
   { path: 'car-details/:carId', component: CarDetailsComponent },
   { path: 'contact', component: ContactUsComponent },
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '**', component: HomeComponent },
 ];

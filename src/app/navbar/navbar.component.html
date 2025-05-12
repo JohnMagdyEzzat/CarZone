@@ -1,4 +1,4 @@
-<div #navbarContainer class="navbar-container">
+<div #navbarContainer class="navbar-container" [class.black-nav]="router.url !== '/'">
   <ul class="navbar">
     <li>
       <a routerLink="">
@@ -7,25 +7,43 @@
     </li>
     <div class="navbar-links">
       <li>
-        <a routerLink="">Home</a>
+        <a
+        class="link"
+        routerLink=""
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Home</a
+        >
       </li>
       <li>
-        <a routerLink="about">About</a>
+        <a class="link" routerLink="about" routerLinkActive="active-link"
+        >About</a
+        >
       </li>
       <li>
-        <a routerLink="services">Services</a>
+        <a class="link" routerLink="services" routerLinkActive="active-link"
+        >Services</a
+        >
       </li>
       <li>
-        <a routerLink="cars">Cars</a>
+        <a class="link" routerLink="cars" routerLinkActive="active-link"
+        >Cars</a
+        >
       </li>
       <li>
-        <a routerLink="contact">Contact</a>
+        <a class="link" routerLink="contact" routerLinkActive="active-link"
+        >Contact</a
+        >
       </li>
       <li>
-        <a routerLink="login">Login</a>
+        <a class="link" routerLink="login" routerLinkActive="active-link"
+        >Login</a
+        >
       </li>
       <li>
-        <a routerLink="register">Register</a>
+        <a class="link" routerLink="register" routerLinkActive="active-link"
+        >Register</a
+        >
       </li>
     </div>
   </ul>

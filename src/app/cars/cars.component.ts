@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CarService } from './services/car.service';
 import { Car } from './models/car';
 import { map } from 'rxjs';
-import { NgOptimizedImage } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
