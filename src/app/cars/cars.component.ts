@@ -3,6 +3,7 @@ import { CarService } from './services/car.service';
 import { Car } from './models/car';
 import { map } from 'rxjs';
 import { NgOptimizedImage } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cars',
@@ -17,11 +18,13 @@ import { NgOptimizedImage } from '@angular/common';
       },
     },
   ],
-  imports: [NgOptimizedImage],
+  imports: [FormsModule],
 })
 export class CarsComponent implements OnInit {
   cars: Car[] = [];
   constructor(public carService: CarService) {}
+  
+  sortValue = '';
 
   ngOnInit() {
     this.carService

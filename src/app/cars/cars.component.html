@@ -1,18 +1,52 @@
 <div class="cars-container">
-  @for (car of cars; track car.id) {
-  <div class="card">
-    <img
-      [ngSrc]="car.main_image"
-      [alt]="car.model"
-      width="200"
-      height="200"
-      [placeholder]="car.main_image"
-    />
+  <div class="flex baseline cars-header-container">
+    <h2 class="pageTitle">Our Cars</h2>
 
-    <p>{{ car.model }}</p>
-    <p>{{ car.year }}</p>
-    <p>{{ car.price }}</p>
-    <p>{{ car.doors }}</p>
+    <div class="flex baseline paggination-container">
+      <div class="flex paggination">
+        <p>Show :</p>
+        <span class="pageNo">5</span><span>/</span>
+        <span class="pageNo">10</span><span>/</span>
+        <span class="pageNo">15</span><span>/</span>
+        <span class="pageNo">20</span>
+      </div>
+
+      <div class="paste-button">
+        <button class="button">Sort &nbsp; ▼</button>
+        <div class="dropdown-content">
+          <a id="top" href="#">Default sorting</a>
+          <a id="middle" href="#">Sort by model</a>
+          <a id="middle" href="#">Sort by year</a>
+          <a id="middle" href="#">Sort by price: low to high</a>
+          <a id="bottom" href="#">Sort by price: high to low</a>
+        </div>
+      </div>
+    </div>
   </div>
-  }
+
+  <div class="car-card-container">
+    @for (car of cars; track car.id) {
+    <div class="car-card">
+      <img class="car-card-img" [src]="car.main_image" [alt]="car.model" />
+      <div>
+        <p>
+          Model: <span class="underlined bold">{{ car.model }}</span>
+        </p>
+        <p>
+          Year: <span class="underlined bold">{{ car.year }}</span>
+        </p>
+        <p>
+          doors: <span class="underlined bold">{{ car.doors }}</span>
+        </p>
+        <p>
+          Price: <span class="underlined bold">{{ car.price }} EGP</span>
+        </p>
+      </div>
+      <div class="car-card-buttons">
+        <button>Add to cart</button>
+        <button>Details</button>
+      </div>
+    </div>
+    }
+  </div>
 </div>

@@ -23,3 +23,11 @@ body {
 .f-col {
   flex-direction: column;
 }
+
+.baseline {
+  align-items: baseline;
+}
+
+.jc-center{
+  justify-content: center;
+}
