@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { AboutComponent } from './about/about.component';
 import { CarDetailsComponent } from './car-details/car-details.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';

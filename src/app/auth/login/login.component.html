@@ -8,6 +8,7 @@
       >
     </div>
     <br />
+    
     <div class="input_container">
       <svg
         fill="none"
@@ -33,8 +34,8 @@
       </svg>
       <input
         placeholder="name@mail.com"
-        title="Inpit title"
-        formControlName="username"
+        title="Email"
+        formControlName="email"
         type="text"
         class="input_field"
         id="email_field"
@@ -69,13 +70,14 @@
       </svg>
       <input
         placeholder="Password"
-        title="Inpit title"
+        title="Password"
         formControlName="password"
         type="password"
         class="input_field"
         id="password_field"
       />
     </div>
+
     <button
       title="Sign In"
       type="submit"
@@ -91,13 +93,8 @@
       <span>Or</span>
       <hr class="line" />
     </div>
-    <button title="Sign In" type="submit" class="sign-in_ggl">
-      <fa-icon class="button-icon" [icon]="faGoogle"></fa-icon>
-      <span class="button-title">Sign In with Google</span>
-    </button>
-    <button title="Sign In" type="submit" class="sign-in_apl">
-      <fa-icon class="button-icon" [icon]="faApple"></fa-icon>
-      <span class="button-title">Sign In with Apple</span>
+    <button title="Register" type="submit" class="sign-in_ggl">
+      <a routerLink="/register" class="button-title">Register</a>
     </button>
   </form>
 </div>

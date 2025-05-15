@@ -96,10 +96,15 @@
   outline: none;
   color: #ffffff;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
 
-.sign-in_ggl,
-.sign-in_apl {
+.sign-in_btn[disabled]{
+  background-color: red;
+  cursor: not-allowed;
+}
+
+.sign-in_ggl {
   width: 100%;
   height: 40px;
   display: flex;
@@ -114,11 +119,6 @@
   filter: drop-shadow(0px 1px 0px #efefef)
     drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
   cursor: pointer;
-}
-
-.sign-in_apl {
-  background: #212121;
-  color: #ffffff;
 }
 
 .separator {
@@ -139,5 +139,11 @@
 }
 
 .button-title{
-    width: 30%;
+    color: black;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
