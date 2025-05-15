@@ -27,7 +27,11 @@
   <div class="car-card-container">
     @for (car of cars; track car.id) {
     <div class="car-card">
-      <img class="car-card-img" [src]="car.main_image" [alt]="car.model" />
+      <app-image-loader
+        [imageSource]="car.main_image"
+        [carModel]="car.model"
+        class="car-card-img"
+      ></app-image-loader>
       <div>
         <p>
           Model: <span class="underlined bold">{{ car.model }}</span>

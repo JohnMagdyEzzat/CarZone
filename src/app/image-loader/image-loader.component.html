@@ -1,0 +1,10 @@
+<div class="intersectContainer">
+  <span [ngClass]="{ 'loader': true, 'loader-loaded': isLoaded }"></span>
+  <img
+    [ngClass]="{ 'car-card-img': true, 'image-loaded': isLoaded }"
+    [src]="imageSource"
+    [alt]="carModel"
+    loading="lazy"
+    (load)="onImageLoad()"
+  />
+</div>

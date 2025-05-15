@@ -94,14 +94,14 @@
   gap: 20px;
   transition: all 0.5s;
   border: 1px solid transparent;
+  width: 13.2vw;
 }
 .car-card:hover {
   transform: scale(1.05);
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 .car-card-img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
   border: 1px solid black;
 }
 

@@ -81,6 +81,7 @@
       type="submit"
       class="sign-in_btn"
       [disabled]="!loginForm.valid"
+      (click)="login()"
     >
       <span>Sign In</span>
     </button>
