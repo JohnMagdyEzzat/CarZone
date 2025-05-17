@@ -2,6 +2,7 @@
   height: 100vh;
 
   background-image: url("/cars/Welcome.jpg");
+  /* background-image: url("/CarZone/cars/Welcome.jpg"); */
   background-position: top left;
   background-size: cover;
 
