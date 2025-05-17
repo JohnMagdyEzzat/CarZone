@@ -154,8 +154,12 @@
 .second_split_field{
   border-radius: 0px 7px 7px 0px;
   padding: 0px 10px;
+  width: 100%;
 }
 .split_fields_container{
   display: flex;
   gap: 2px;
+}
+.form-errors-container{
+  width: 100%;
 }

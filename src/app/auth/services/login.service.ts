@@ -14,25 +14,25 @@ import {
 })
 export class LoginService {
   private baseApiURL = 'https://sunny-macaque-arguably.ngrok-free.app/api/';
-  defaultHeaders = new HttpHeaders().set('ngrok-skip-browser-warning', '69420');
-  http = inject(HttpClient);
+  private defaultHeaders = new HttpHeaders().set('ngrok-skip-browser-warning', '69420');
+  private http = inject(HttpClient);
 
   constructor() {}
 
   public login(body: UserLogin) {
-    return this.http.post<{ data: User[] }>(this.baseApiURL + 'login', body, {
+    return this.http.post<{ data: User }>(this.baseApiURL + 'login', body, {
       headers: this.defaultHeaders,
     });
   }
 
   public register(body: UserRegister) {
-    return this.http.post<{ data: User[] }>(this.baseApiURL + 'register', body, {
+    return this.http.post<{ data: User }>(this.baseApiURL + 'register', body, {
       headers: this.defaultHeaders,
     });
   }
 
   public logout(body: UserLogout) {
-    return this.http.post<{ data: User[] }>(this.baseApiURL + 'logout', body, {
+    return this.http.post<{ data: User }>(this.baseApiURL + 'logout', body, {
       headers: this.defaultHeaders,
     });
   }
@@ -46,7 +46,7 @@ export class LoginService {
       }
     );
   }
-  
+
   public forgotPassword(body: UserForgotPassword) {
     return this.http.post<{ data: User[] }>(
       this.baseApiURL + 'forgot-password',
@@ -55,5 +55,11 @@ export class LoginService {
         headers: this.defaultHeaders,
       }
     );
+  }
+
+  public getUserById(id: number) {
+    return this.http.get<{ data: User }>(this.baseApiURL + 'users/' + id, {
+      headers: this.defaultHeaders,
+    });
   }
 }

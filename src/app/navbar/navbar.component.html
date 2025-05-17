@@ -1,4 +1,8 @@
-<div #navbarContainer class="navbar-container" [class.black-nav]="router.url !== '/'">
+<div
+  #navbarContainer
+  class="navbar-container"
+  [class.black-nav]="router.url !== '/'"
+>
   <ul class="navbar">
     <li>
       <a routerLink="">
@@ -8,43 +12,56 @@
     <div class="navbar-links">
       <li>
         <a
-        class="link"
-        routerLink=""
-        routerLinkActive="active-link"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Home</a
+          class="link"
+          routerLink=""
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Home</a
         >
       </li>
       <li>
         <a class="link" routerLink="about" routerLinkActive="active-link"
-        >About</a
+          >About</a
         >
       </li>
       <li>
         <a class="link" routerLink="services" routerLinkActive="active-link"
-        >Services</a
+          >Services</a
         >
       </li>
       <li>
         <a class="link" routerLink="cars" routerLinkActive="active-link"
-        >Cars</a
+          >Cars</a
         >
       </li>
       <li>
         <a class="link" routerLink="contact" routerLinkActive="active-link"
-        >Contact</a
+          >Contact</a
         >
       </li>
-      <li>
-        <a class="link" routerLink="login" routerLinkActive="active-link"
-        >Login</a
-        >
-      </li>
-      <li>
-        <a class="link" routerLink="register" routerLinkActive="active-link"
-        >Register</a
-        >
-      </li>
+      @if (authService.currentUserSig() === null) {
+      <div class="flex">
+        <li>
+          <a class="link" routerLink="login" routerLinkActive="active-link"
+            >Login</a
+          >
+        </li>
+        <li>
+          <a class="link" routerLink="register" routerLinkActive="active-link"
+            >Register</a
+          >
+        </li>
+      </div>
+      } @if (authService.currentUserSig()) {
+      <div class="flex">
+        <li>
+          <a class="link" href="">{{ authService.currentUserSig()?.name }}</a>
+        </li>
+        <li>
+          <a class="link pointer" (click)="logout()">Logout</a>
+        </li>
+      </div>
+      }
     </div>
   </ul>
 </div>

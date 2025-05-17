@@ -7,6 +7,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../auth/services/auth.service';
+import { LoginService } from '../auth/services/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,9 +20,28 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 export class NavbarComponent implements OnInit {
   @ViewChild('navbarContainer', { static: true }) navbarContainer!: ElementRef;
   router = inject(Router);
+  authService = inject(AuthService);
+  loginService = inject(LoginService);
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (!localStorage.getItem('id')) {
+      this.authService.currentUserSig.set(null);
+    } else {
+      this.loginService
+        .getUserById(Number(localStorage.getItem('id')))
+        .subscribe({
+          next: (response) => {
+            if (response) {
+              this.authService.currentUserSig.set(response.data);
+            }
+          },
+          error: (error) => {
+            this.authService.currentUserSig.set(null);
+          },
+        });
+    }
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -39,5 +60,20 @@ export class NavbarComponent implements OnInit {
         navbarClassList.remove('transition-04');
       }
     }
+  }
+
+  logout() {
+    this.loginService.logout(this.payload).subscribe();
+    localStorage.setItem('token', '');
+    localStorage.setItem('id', '');
+    this.authService.currentUserSig.set(null);
+    this.router.navigateByUrl('/');
+  }
+
+  get payload() {
+    return {
+      email: this.authService.currentUserSig()?.email || '',
+      token: localStorage.getItem('token') || '',
+    };
   }
 }
