@@ -1,3 +1,10 @@
 <app-navbar></app-navbar>
 
+@if (spinnerServices.spinnerCounter$ | async) {
+    <div class="spinner-container">
+        <span class="loader"></span>
+        <span class="loading">Loading ...</span>
+    </div>
+}
+
 <router-outlet></router-outlet>

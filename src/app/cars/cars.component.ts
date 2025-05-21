@@ -28,4 +28,9 @@ export class CarsComponent implements OnInit {
       )
       .subscribe();
   }
+  showDetails(car: Car) {
+    this.carService.getCar(car.id).subscribe((car) => {
+      console.log(car);
+    });
+  }
 }

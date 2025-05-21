@@ -45,6 +45,6 @@ export class LoginService {
   }
 
   public getUserById(id: number) {
-    return this.http.get<{ data: User }>(this.usersURL + id);
+    return this.http.get<{ data: User }>(`${this.usersURL}/${id}`);
   }
 }
