@@ -6,8 +6,10 @@ import { inject } from '@angular/core';
 export const spinnerInterceptor: HttpInterceptorFn = (req, next) => {
   const spinnerService = inject(SpinnerService);
   spinnerService.show();
-  
-  return next(req).pipe(finalize(() => {
-    spinnerService.hide();
-  }));
+
+  return next(req).pipe(
+    finalize(() => {
+      spinnerService.hide();
+    })
+  );
 };

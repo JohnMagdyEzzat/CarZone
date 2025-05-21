@@ -1,9 +1,6 @@
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import {
-  provideRouter,
-  withComponentInputBinding,
-  withRouterConfig,
-} from '@angular/router';
+import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -17,5 +14,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptors([skipWarningInterceptor, spinnerInterceptor])
     ),
+    provideAnimationsAsync(),
   ],
 };

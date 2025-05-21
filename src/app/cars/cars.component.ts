@@ -1,25 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { CarService } from './services/car.service';
 import { Car } from './models/car';
-import { map } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { ImageLoaderComponent } from '../image-loader/image-loader.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.component.html',
   styleUrls: ['./cars.component.css'],
   providers: [CarService],
-  imports: [FormsModule, ImageLoaderComponent],
+  imports: [FormsModule, ImageLoaderComponent, RouterLink],
 })
-export class CarsComponent implements OnInit {
-  cars: Car[] = [];
-  constructor(public carService: CarService) {}
+export class CarsComponent implements OnInit, OnDestroy {
+  @Input() cars: Car[] = [];
+  carService = inject(CarService);
+  carSubscription: Subscription = new Subscription();
+
+  constructor() {}
 
   sortValue = '';
 
   ngOnInit() {
-    this.carService
+    this.carSubscription = this.carService
       .getCars()
       .pipe(
         map((cars) => {
@@ -28,9 +32,8 @@ export class CarsComponent implements OnInit {
       )
       .subscribe();
   }
-  showDetails(car: Car) {
-    this.carService.getCar(car.id).subscribe((car) => {
-      console.log(car);
-    });
+  
+  ngOnDestroy(): void {
+    this.carSubscription.unsubscribe();
   }
 }

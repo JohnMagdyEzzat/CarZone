@@ -1,13 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
-import {
-  Component,
-  ElementRef,
-  inject,
-  Input,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-image-loader',
