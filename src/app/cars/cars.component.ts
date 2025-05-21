@@ -24,7 +24,6 @@ export class CarsComponent implements OnInit {
       .pipe(
         map((cars) => {
           this.cars = cars.data;
-          console.log(this.cars);
         })
       )
       .subscribe();

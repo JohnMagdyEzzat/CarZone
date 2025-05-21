@@ -25,8 +25,6 @@ export class ImageLoaderComponent implements OnInit {
   ngOnInit() {}
 
   onImageLoad() {
-    console.log('t');
-    
     this.isLoaded = true;
   }
 }
