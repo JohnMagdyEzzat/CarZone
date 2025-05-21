@@ -163,3 +163,8 @@
 .form-errors-container{
   width: 100%;
 }
+
+.error{
+  border: 1px solid red;
+  background-color: #fff2f3;
+}

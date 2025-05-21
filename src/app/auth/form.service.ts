@@ -38,16 +38,22 @@ export class FormService {
       return `${controlName} is required`;
     }
     if (control.errors?.['minlength']) {
-      return `Minimum length is ${control.errors?.['minlength'].requiredLength}`;
+      return `Minimum length for ${controlName} is ${control.errors?.['minlength'].requiredLength} characters`;
     }
     if (control.errors?.['maxlength']) {
-      return `Maximum length is ${control.errors?.['maxlength'].requiredLength}`;
+      return `Maximum length for ${controlName} is ${control.errors?.['maxlength'].requiredLength} characters`;
     }
     if (control.errors?.['email']) {
       return 'Invalid email format';
     }
     if (control.errors?.['passwordMismatch']) {
       return 'Passwords do not match';
+    }
+    if (control.errors?.['pattern']) {
+      return `Invalid format for ${controlName}`;
+    }
+    if (control.errors?.['startWithZero']) {
+      return `${controlName} should start with 0`;
     }
     return '';
   }

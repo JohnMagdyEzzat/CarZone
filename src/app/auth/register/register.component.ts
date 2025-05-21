@@ -72,7 +72,11 @@ export class RegisterComponent implements OnInit {
     }),
     phoneNo: [
       '',
-      [Validators.required, Validators.minLength(11), Validators.maxLength(11)],
+      [
+        Validators.required,
+        Validators.minLength(11),
+        Validators.maxLength(13),
+      ],
     ],
     address: ['', [Validators.required]],
     state: ['', [Validators.required]],
@@ -121,7 +125,7 @@ export class RegisterComponent implements OnInit {
       lname: this.registerForm.value.lname || '',
       email: this.registerForm.value.email || '',
       password: this.registerForm.value.passwordGroup?.password || '',
-      phone_no: this.registerForm.value.phoneNo || '',
+      phone_no: this.registerForm.value.phoneNo?.replaceAll(" ",'') || '',
       address:
         this.registerForm.value.address +
           ', ' +
@@ -137,6 +141,11 @@ export class RegisterComponent implements OnInit {
     const reg = /^\d+$/;
     const input = event.key;
     const phone = this.registerForm.value.phoneNo;
+
+    if (phone && phone[0] !== '0') {
+      this.registerForm.controls.phoneNo.setErrors({startWithZero: true});
+      event.preventDefault();
+    }
 
     if (!reg.test(input) || (input !== '0' && phone?.length === 0)) {
       event.preventDefault();

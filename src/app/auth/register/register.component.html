@@ -57,6 +57,10 @@
           formControlName="fname"
           type="text"
           class="input_field first_split_field"
+          [class.error]="
+            registerForm.get('fname')?.invalid &&
+            registerForm.get('fname')?.touched
+          "
           id="fname_field"
         />
         <input
@@ -65,6 +69,10 @@
           formControlName="lname"
           type="text"
           class="input_field second_split_field"
+          [class.error]="
+            registerForm.get('lname')?.invalid &&
+            registerForm.get('lname')?.touched
+          "
           id="lname_field"
         />
       </div>
@@ -103,6 +111,11 @@
           formControlName="password"
           type="password"
           class="input_field first_split_field"
+          [class.error]="
+            (passwordGroup.get('password')?.invalid ||
+              registerForm.get('passwordGroup')?.invalid) &&
+            passwordGroup.get('password')?.touched
+          "
           id="password_field"
         />
         <input
@@ -111,6 +124,11 @@
           formControlName="confirmPassword"
           type="password"
           class="input_field second_split_field"
+          [class.error]="
+            (passwordGroup.get('confirmPassword')?.invalid ||
+              registerForm.get('passwordGroup')?.invalid) &&
+            passwordGroup.get('confirmPassword')?.touched
+          "
           id="confirm_password_field"
         />
       </div>
@@ -144,6 +162,10 @@
         formControlName="email"
         type="email"
         class="input_field"
+        [class.error]="
+          registerForm.get('email')?.invalid &&
+          registerForm.get('email')?.touched
+        "
         id="email_field"
       />
     </div>
@@ -190,7 +212,14 @@
         formControlName="phoneNo"
         type="text"
         class="input_field"
+        [class.error]="
+          registerForm.get('phoneNo')?.invalid &&
+          registerForm.get('phoneNo')?.touched
+        "
         id="phone_field"
+        minlength="11"
+        maxlength="13"
+        (keypress)="updatePhoneValue($event)"
       />
     </div>
     <div class="input_container">
@@ -235,12 +264,20 @@
           formControlName="address"
           type="text"
           class="input_field first_split_field"
+          [class.error]="
+            registerForm.get('address')?.invalid &&
+            registerForm.get('address')?.touched
+          "
           id="address_field"
         />
         <select
           id="state"
           formControlName="state"
           class="input_field second_split_field"
+          [class.error]="
+            registerForm.get('state')?.invalid &&
+            registerForm.get('state')?.touched
+          "
           title="state"
         >
           <option value="" disabled selected>Select your state</option>
