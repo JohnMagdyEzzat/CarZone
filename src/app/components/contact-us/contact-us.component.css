@@ -1,0 +1,12 @@
+.contact-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    border: 3px solid yellow;
+}
+
+.contact-container app-map-display{
+    width: 70%;
+    height: inherit;
+}

@@ -6,10 +6,10 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
-import { SpinnerService } from './interceptor/spinner.service';
+import { SpinnerService } from './services/spinner.service';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',

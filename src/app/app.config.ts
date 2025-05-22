@@ -4,8 +4,8 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { skipWarningInterceptor } from './interceptor/skip-warning.interceptor';
-import { spinnerInterceptor } from './interceptor/spinner.interceptor';
+import { skipWarningInterceptor } from './interceptors/skip-warning.interceptor';
+import { spinnerInterceptor } from './interceptors/spinner.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
