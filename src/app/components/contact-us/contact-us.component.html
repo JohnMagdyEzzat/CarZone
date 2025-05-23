@@ -43,9 +43,8 @@
         </button>
         @if (emailSentNotification) {
         <p>Your inquiry has been sent successfully!</p>
-        }
-        @if (failToSendNotification) {
-          <p>Please fill missing data and try again!</p>
+        } @if (failToSendNotification) {
+        <p>Please fill missing data and try again!</p>
         }
       </form>
     </div>
