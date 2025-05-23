@@ -1,5 +1,5 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 export const skipWarningInterceptor: HttpInterceptorFn = (req, next) => {
   // const skipWarningHeader = Object.keys(environment.defaultHeaders)[0];

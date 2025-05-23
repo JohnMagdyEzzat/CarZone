@@ -8,7 +8,7 @@ import {
   UserRegister,
   UserResetPassword,
 } from '../models/user.model';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
