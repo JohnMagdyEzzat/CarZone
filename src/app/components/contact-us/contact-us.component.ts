@@ -1,17 +1,54 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MapDisplayComponent } from '../map-display/map-display.component';
+import { GoogleMapData } from '../../models/branch';
+import { BranchService } from '../../services/branch.service';
+import { tap } from 'rxjs';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.css'],
-  imports: [MapDisplayComponent],
+  imports: [MapDisplayComponent, ReactiveFormsModule],
 })
 export class ContactUsComponent implements OnInit {
+  googleMapData: GoogleMapData[] = [];
+  branchServices = inject(BranchService);
+  fb = inject(FormBuilder);
+  emailForm = this.fb.group({
+    name: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    inquiry: ['', [Validators.required]],
+  });
+  emailSentNotification = false;
+  failToSendNotification = false;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    this.branchServices
+      .getBranches()
+      .pipe(
+        tap((res) => {
+          this.googleMapData = res.data;
+        })
+      )
+      .subscribe();
   }
 
+  sendEmail(): void {
+    this.emailSentNotification = false;
+    this.failToSendNotification = false;
+
+    if (this.emailForm.valid) {
+      console.log(this.emailForm.value);
+      this.emailSentNotification = true;
+      this.emailForm.reset();
+    } else {
+      console.error('nameErrors',this.emailForm.controls.name.errors);
+      console.error('emailErrors',this.emailForm.controls.email.errors);
+      console.error('inquiryErrors',this.emailForm.controls.inquiry.errors);
+      this.failToSendNotification = true;
+    }
+  }
 }
