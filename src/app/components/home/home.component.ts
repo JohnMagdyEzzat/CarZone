@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { TopCarsComponent } from '../top-cars/top-cars.component';
 import { ServicesComponent } from '../our-services/services.component';
-import { ReviewsComponent } from '../reviews/reviews.component';
 import { ContactUsComponent } from '../contact-us/contact-us.component';
+import { CommentsComponent } from "../comments/comments.component";
 
 @Component({
   selector: 'app-home',
@@ -13,9 +13,9 @@ import { ContactUsComponent } from '../contact-us/contact-us.component';
     WelcomeComponent,
     TopCarsComponent,
     ServicesComponent,
-    ReviewsComponent,
     ContactUsComponent,
-  ],
+    CommentsComponent
+],
 })
 export class HomeComponent implements OnInit {
   constructor() {}

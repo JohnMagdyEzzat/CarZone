@@ -40,7 +40,7 @@ export class MapDisplayComponent {
   options: google.maps.MapOptions = {
     zoom: 12,
     center: this.center,
-    mapId: 'id',
+    mapId: '1f394e2c07bb3fd18c5772a1',
   };
 
   mapInfoWindowOptions: google.maps.InfoWindowOptions = {

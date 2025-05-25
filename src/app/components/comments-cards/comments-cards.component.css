@@ -1,0 +1,68 @@
+.cards-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cards-group .btn {
+  height: 3rem;
+  width: 3rem;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.151);
+  cursor: pointer;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.comment-cards-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  padding: 0.7rem;
+  width: 13.4rem;
+  scroll-behavior: smooth;
+}
+
+.comment-card {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  padding: 0.7rem;
+  margin-right: 1rem;
+  transition: all 0.5s;
+  border: 1px solid transparent;
+}
+
+.comment-card:last-child{
+  margin-right: 0rem;
+}
+
+.comment-card div {
+  max-width: 12rem;
+  min-width: 12rem;
+  text-align: center;
+}
+
+.comment-card:hover {
+  transform: scale(1.05);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.circle{
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.circles-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0;
+}
+
+.active-circle{
+  background-color: rgba(1, 210, 140, 0.548);
+}

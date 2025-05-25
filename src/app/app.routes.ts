@@ -8,6 +8,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { LoginComponent } from './components/login/login.component';
 import { AboutComponent } from './components/about/about.component';
 import { CarDetailsComponent } from './components/car-details/car-details.component';
+import { SoonComponent } from './components/soon/soon.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -19,5 +20,6 @@ export const routes: Routes = [
   { path: 'cars/:carId', component: CarDetailsComponent },
   { path: 'contact', component: ContactUsComponent },
   { path: 'profile', component: UserProfileComponent },
+  { path: 'soon', component: SoonComponent },
   { path: '**', component: HomeComponent },
 ];

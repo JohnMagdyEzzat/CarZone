@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Car } from '../../models/car';
 import { map, Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
@@ -13,8 +13,9 @@ import { CarService } from '../../services/car.service';
   providers: [CarService],
   imports: [FormsModule, ImageLoaderComponent, RouterLink],
 })
+
 export class CarsComponent implements OnInit, OnDestroy {
-  @Input() cars: Car[] = [];
+  cars: Car[] = [];
   carService = inject(CarService);
   carSubscription: Subscription = new Subscription();
 

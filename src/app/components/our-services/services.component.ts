@@ -21,57 +21,32 @@ import {
 export class ServicesComponent implements OnInit {
   ourServicesCards = [
     {
-      cardTitle: 'Buy New & Used Cars',
+      cardTitle: 'Provide a Secure Platform',
       description:
-        'Browse a wide selection of new and certified pre-owned vehicles from trusted dealers.',
+        'Implement secaure payment gateways for transactions and Build trust through verified profiles and secure payment systems.',
       icon: faCar,
     },
     {
-      cardTitle: 'Sell Your Car',
-      description:
-        'List your car easily and reach thousands of potential buyers—no hidden fees.',
+      cardTitle: 'Accessibility',
+      description: 'Provide a seamless experience for buyers and admins',
       icon: faMoneyBill,
     },
     {
-      cardTitle: 'Car Valuation Tool',
+      cardTitle: 'Simplify Search',
       description:
-        'Instantly get a fair market estimate for your vehicle’s value using our smart calculator.(Soon)',
+        'Provide advanced search and filtering options for cars and Enable users to find cars by brand, price, year, etc',
       icon: faCalculator,
     },
     {
-      cardTitle: 'Vehicle History Reports',
+      cardTitle: 'Secure Authentication',
       description:
-        'Access detailed reports (e.g. accidents, servicing, ownership) for transparency.',
+        'Implement login, registeration, and role management and Protects user data and ensures proper access control',
       icon: faFileAlt,
     },
     {
-      cardTitle: 'Trade-In Services',
-      description:
-        'Trade in your old car and get its value deducted from your next purchase.',
+      cardTitle: 'Scalability',
+      description: 'Provide a smooth experience during peak usage',
       icon: faSyncAlt,
-    },
-    {
-      cardTitle: 'Home Test Drive',
-      description:
-        'Schedule a test drive and we’ll bring the car to your home (select areas only).',
-      icon: faCalendarCheck,
-    },
-    {
-      cardTitle: 'Inspection Services',
-      description: 'Book third-party inspections for peace of mind.',
-      icon: faSearch
-    },
-    {
-      cardTitle: 'Documentation Support',
-      description:
-        'We help handle registration, title transfer, and other paperwork hassle-free.',
-      icon: faBookOpen,
-    },
-    {
-      cardTitle: '24/7 Customer Support',
-      description:
-        'Our support team is available anytime to assist you with your queries.',
-      icon: faComments,
     },
   ];
 

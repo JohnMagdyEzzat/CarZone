@@ -1,0 +1,27 @@
+import { Observable } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import {
+  IComment,
+  ICommentCreation,
+  ICommentCreationResponse,
+} from '../models/comment';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class CommentService {
+  private commentsURL = environment.apiUrl + 'comments';
+  http = inject(HttpClient);
+  constructor() {}
+  getAllComments(): Observable<{ data: IComment[] }> {
+    return this.http.get<{ data: IComment[] }>(this.commentsURL);
+  }
+  createComment(
+    comment: ICommentCreation
+  ): Observable<ICommentCreationResponse> {
+    return this.http.post<ICommentCreationResponse>(this.commentsURL, comment);
+  }
+  updateComment() {}
+}

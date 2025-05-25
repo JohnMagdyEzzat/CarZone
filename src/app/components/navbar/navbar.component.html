@@ -20,7 +20,9 @@
         >
       </li>
       <li>
-        <a class="link" routerLink="about" routerLinkActive="active-link"
+        <!-- routerLinkActive="active-link" -->
+         <!-- about -->
+        <a class="link" routerLink="soon" 
           >About</a
         >
       </li>
@@ -55,7 +57,9 @@
       } @if (authService.currentUserSig()) {
       <div class="flex">
         <li>
-          <a class="link" routerLink="profile" routerLinkActive="active-link">{{
+          <!-- profile -->
+           <!-- routerLinkActive="active-link" -->
+          <a class="link" routerLink="soon" >{{
             authService.currentUserSig()?.name
           }}</a>
         </li>
