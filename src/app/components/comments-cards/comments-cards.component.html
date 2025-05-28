@@ -1,23 +1,25 @@
 <div class="cards-group">
-    <button class="btn" #previousBtn (click)="previousComment(previousBtn)"><</button>
-    <div class="comment-cards-container">
-      @for (comment of comments; track comment.id) {
-      <div #commentCards class="comment-card">
-        <div>
-          <p>
-            <span>{{ comment.body }}</span>
-          </p>
-        </div>
+  <button class="btn" #previousBtn (click)="previousComment(previousBtn)">
+    <
+  </button>
+  <div class="comment-cards-container">
+    @for (comment of comments; track comment.id) {
+    <div #commentCards class="comment-card">
+      <div>
+        <p>
+          <span>{{ comment.body }}</span>
+        </p>
       </div>
-      }
     </div>
-    <button class="btn" #nextBtn (click)="nextComment(nextBtn)">></button>
-  </div>
-  <div class="circles-container">
-    @for (comment of comments; track $index) {
-    <div
-      [class]="{ 'circle': true, 'active-circle': $index === activeCircle }"
-      (click)="activateCircle($index)"
-    ></div>
     }
   </div>
+  <button class="btn" #nextBtn (click)="nextComment(nextBtn)">></button>
+</div>
+<div class="circles-container">
+  @for (comment of comments; track $index) {
+  <div
+    [class]="{ circle: true, 'active-circle': $index === activeCircle }"
+    (click)="activateCircle($index)"
+  ></div>
+  }
+</div>

@@ -7,6 +7,7 @@ import {
   UserLogout,
   UserRegister,
   UserResetPassword,
+  UserUpdate,
 } from '../models/user.model';
 import { environment } from '../../environments/environment';
 
@@ -44,7 +45,11 @@ export class LoginService {
     return this.http.post<{ data: User[] }>(this.forgotPasswordURL, body);
   }
 
-  public getUserById(id: number) {
-    return this.http.get<{ data: User }>(`${this.usersURL}/${id}`);
+  public getUserById(userId: number) {
+    return this.http.get<{ data: User }>(`${this.usersURL}/${userId}`);
+  }
+
+  public updateUser(userId: number, userData: UserUpdate) {
+    return this.http.put<{ data: User }>(`${this.usersURL}/${userId}`, userData);
   }
 }

@@ -1,1 +1,95 @@
-<p>user-profile works!</p>
+<div class="profile-container">
+  <form [formGroup]="profileForm">
+    <div class="profile-header">
+      <h1 class="profile-welcome">
+        <span class="welcome-text">Welcome</span>
+        @if (editMode) {
+        <span class="form-group">
+          <input type="text" formControlName="fname" />
+          <input type="text" formControlName="lname" />
+        </span>
+        }@else {
+        <span class="underlined">{{ user?.name }}</span>
+        }
+      </h1>
+      @if (editMode) {
+      <span class="form-group">
+        <input type="email" formControlName="email" />
+      </span>
+      }@else{
+      <p>{{ user?.email }}</p>
+      }
+    </div>
+    <div class="profile-details">
+      <div class="container">
+        <h2>Phone</h2>
+        @if (editMode) {
+        <span class="form-group">
+          <input type="number" formControlName="phone" />
+        </span>
+        }@else{
+        <p>{{ user?.phone_no }}</p>
+        }
+      </div>
+      <div class="container">
+        <h2>Address</h2>
+        @if (editMode) {
+        <span class="form-group">
+          <input type="text" formControlName="address" />
+        </span>
+        }@else{
+        <p>{{ user?.address }}</p>
+        }
+      </div>
+    </div>
+  </form>
+
+  <div class="profile-actions">
+    <div class="container">
+      <h2>User actions</h2>
+      <button (click)="toggleEditProfile()">{{ editBtnTitle }}</button>
+      <button (click)="logout()">Logout</button>
+      <button (click)="forgetPassword()" [disabled]="isResetPassword">
+        Forget password
+      </button>
+    </div>
+
+    <div #resetPassword class="hidden">
+      <div class="container">
+        <h2>Reset Password</h2>
+        <form class="form-container" [formGroup]="resetPasswordForm">
+          <div class="form-group otp">
+            <label for="password">Password</label>
+            <input type="password" formControlName="password" id="password" />
+          </div>
+          <div class="form-group otp">
+            <label for="confirmPassword">Confirm password</label>
+            <input type="text" formControlName="confirmPassword" id="confirmPassword" />
+          </div>
+          <div class="form-group otp">
+            <label for="OTP">OTP</label>
+            <input type="text" formControlName="otp" id="OTP" />
+          </div>
+        </form>
+      </div>
+      <div class="container otp">
+        <button (click)="onResetPassword()">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-comments">
+    <div class="container">
+      <h2>Comments</h2>
+      @for (comment of comments; track $index) {
+      <div class="comment-card">
+        <p>{{ comment.body }}</p>
+        <div class="btn-container">
+          <button class="btn" (click)="editComment(comment)">Edit</button>
+          <button class="btn-delete" (click)="deleteComment(comment)">Delete</button>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

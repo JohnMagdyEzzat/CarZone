@@ -21,3 +21,12 @@ export interface ICommentCreationResponse {
     id: number;
   };
 }
+
+export interface ICommentUpdate {
+  fname: string;
+  lname: string;
+  email: string;
+  password: string;
+  phone_no: string;
+  address: string;
+}

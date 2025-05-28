@@ -21,6 +21,14 @@ export interface UserRegister {
   address: string;
 }
 
+export interface UserUpdate {
+  fname: string;
+  lname: string;
+  email: string;
+  phone_no: string;
+  address: string;
+}
+
 export interface UserLogout {
   email: string;
   token: string;

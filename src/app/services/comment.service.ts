@@ -6,6 +6,7 @@ import {
   IComment,
   ICommentCreation,
   ICommentCreationResponse,
+  ICommentUpdate,
 } from '../models/comment';
 
 @Injectable({
@@ -23,5 +24,9 @@ export class CommentService {
   ): Observable<ICommentCreationResponse> {
     return this.http.post<ICommentCreationResponse>(this.commentsURL, comment);
   }
-  updateComment() {}
+  updateComment(
+    comment: ICommentUpdate
+  ) {
+    return this.http.post<ICommentCreationResponse>(this.commentsURL, comment);
+  }
 }

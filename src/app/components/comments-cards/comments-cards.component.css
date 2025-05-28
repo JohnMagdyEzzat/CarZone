@@ -11,7 +11,12 @@
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.151);
   cursor: pointer;
-      box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.cards-group .btn:disabled {
+  color: black;
 }
 
 .comment-cards-container {
@@ -32,7 +37,7 @@
   border: 1px solid transparent;
 }
 
-.comment-card:last-child{
+.comment-card:last-child {
   margin-right: 0rem;
 }
 
@@ -47,7 +52,7 @@
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.circle{
+.circle {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
@@ -55,7 +60,7 @@
   cursor: pointer;
 }
 
-.circles-container{
+.circles-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,6 +68,7 @@
   padding: 1rem 0;
 }
 
-.active-circle{
+.active-circle {
   background-color: rgba(1, 210, 140, 0.548);
 }
+

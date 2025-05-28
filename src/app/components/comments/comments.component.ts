@@ -1,17 +1,15 @@
 import {
   Component,
-  ElementRef,
   inject,
   OnDestroy,
   OnInit,
-  viewChild,
 } from '@angular/core';
 import { CommentService } from '../../services/comment.service';
 import { Subscription, tap } from 'rxjs';
 import { IComment, ICommentCreation } from '../../models/comment';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CommentsCardsComponent } from "../comments-cards/comments-cards.component";
+import { CommentsCardsComponent } from '../comments-cards/comments-cards.component';
 
 @Component({
   selector: 'app-comments',
