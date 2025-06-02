@@ -9,10 +9,11 @@ import { LoginComponent } from './components/login/login.component';
 import { AboutComponent } from './components/about/about.component';
 import { CarDetailsComponent } from './components/car-details/car-details.component';
 import { SoonComponent } from './components/soon/soon.component';
+import { loginGuard } from './guards/login.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'about', component: AboutComponent },
   { path: 'services', component: ServicesComponent },

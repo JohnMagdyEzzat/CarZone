@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { ImageGalleryComponent } from '../image-gallery/image-gallery.component';
 import { CarService } from '../../services/car.service';
 import { Car } from '../../models/car';
+import { EgpCurrencyPipe } from '../../pipes/egp-currency.pipe';
 
 @Component({
   selector: 'app-car-details',
   templateUrl: './car-details.component.html',
   styleUrls: ['./car-details.component.css'],
-  imports: [RouterLink, CommonModule, ImageGalleryComponent],
+  imports: [RouterLink, CommonModule, ImageGalleryComponent, EgpCurrencyPipe],
 })
 export class CarDetailsComponent implements OnInit {
   private readonly carServices = inject(CarService);

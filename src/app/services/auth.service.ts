@@ -7,4 +7,8 @@ import { User } from '../models/user.model';
 export class AuthService {
   currentUserSig = signal<User | undefined | null>(undefined);
   constructor() {}
+
+  isAuthenticated(): boolean {
+    return localStorage.getItem('id') ? true : false;
+  }
 }

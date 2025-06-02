@@ -13,7 +13,7 @@ import {
   providedIn: 'root',
 })
 export class CommentService {
-  private commentsURL = environment.apiUrl + 'comments';
+  private commentsURL = environment.apiUrl + 'comments/';
   http = inject(HttpClient);
   constructor() {}
   getAllComments(): Observable<{ data: IComment[] }> {
@@ -24,9 +24,15 @@ export class CommentService {
   ): Observable<ICommentCreationResponse> {
     return this.http.post<ICommentCreationResponse>(this.commentsURL, comment);
   }
-  updateComment(
-    comment: ICommentUpdate
-  ) {
-    return this.http.post<ICommentCreationResponse>(this.commentsURL, comment);
+  updateComment(commentId: number, comment: ICommentUpdate) {
+    return this.http.put<ICommentCreationResponse>(
+      this.commentsURL + commentId,
+      comment
+    );
+  }
+  deleteComment(commentId: number, userId: number): Observable<any> {
+    return this.http.delete<any>(this.commentsURL + commentId, {
+      body: { user_id: userId },
+    });
   }
 }

@@ -53,86 +53,91 @@
     <app-image-gallery [images]="car?.images || []"></app-image-gallery>
 
     <div class="car-details-info">
-      <h3>{{ car?.model || "-" }}</h3>
-      <div class="car-details-info-table">
-        <table>
-          <tr>
-            <td>Year</td>
-            <td>{{ car?.year || "-" }}</td>
-          </tr>
-          <tr>
-            <td>Doors</td>
-            <td>{{ car?.doors || "-" }}</td>
-          </tr>
-          <tr>
-            <td>Price</td>
-            <td>{{ car?.price || "-" }} EGP</td>
-          </tr>
-          <tr>
-            <td>Acceleration</td>
-            <td>{{ car?.acceleration || "-" }}</td>
-          </tr>
-          <tr>
-            <td>Engine Cylinder</td>
-            <td>{{ car?.engine_cylinder || "-" }}</td>
-          </tr>
-          <tr>
-            <td>Engine Power</td>
-            <td>{{ car?.engine_power || "-" }}</td>
-          </tr>
-          <tr>
-            <td>Engine Cubic Capacity Type</td>
-            <td>{{ car?.engine_cubic_capacity_type || "-" }}</td>
-          </tr>
-          <tr>
-            <td>Fuel Efficiency</td>
-            <td>{{ car?.fuel_efficiency || "-" }}</td>
-          </tr>
-          <tr>
-            <td>Top Speed</td>
-            <td>{{ car?.top_speed || "-" }}</td>
-          </tr>
-        </table>
-        <hr>
-        <table>
-          <tr>
-            <td>Color</td>
-            <td>{{ car?.color || "-" }}</td>
-          </tr>
-          <tr>
-            <td>Transmission</td>
-            <td>{{ car?.transmission || "-" }}</td>
-          </tr>
-          <tr>
-            <td>Engine Type</td>
-            <td>{{ car?.engine_type || "-" }}</td>
-          </tr>
-          <tr>
-            <td>Features</td>
-            <td>{{ car?.features || "-" }}</td>
-          </tr>
+      <div>
+        <h3>{{ car?.model || "-" }} ({{ car?.year }})</h3>
+        <h3>
+          {{ (car?.price | egpCurrency) || "-" }}
+        </h3>
+      </div>
+      <div class="car-details-body">
+        <h3>Car Details</h3>
+        <div class="car-details-info-table">
+          <table>
+            <tr>
+              <td>Year</td>
+              <td>{{ car?.year || "-" }}</td>
+            </tr>
+            <tr>
+              <td>Doors</td>
+              <td>{{ car?.doors || "-" }}</td>
+            </tr>
+            <tr>
+              <td>Price</td>
+              <td>{{ car?.price || "-" }} EGP</td>
+            </tr>
+            <tr>
+              <td>Acceleration</td>
+              <td>{{ car?.acceleration || "-" }}</td>
+            </tr>
+            <tr>
+              <td>Engine Cylinder</td>
+              <td>{{ car?.engine_cylinder || "-" }}</td>
+            </tr>
+            <tr>
+              <td>Engine Power</td>
+              <td>{{ car?.engine_power || "-" }}</td>
+            </tr>
+            <tr>
+              <td>Engine Cubic Capacity Type</td>
+              <td>{{ car?.engine_cubic_capacity_type || "-" }}</td>
+            </tr>
+            <tr>
+              <td>Fuel Efficiency</td>
+              <td>{{ car?.fuel_efficiency || "-" }}</td>
+            </tr>
+            <tr>
+              <td>Top Speed</td>
+              <td>{{ car?.top_speed || "-" }}</td>
+            </tr>
+            <tr>
+              <td>Color</td>
+              <td>{{ car?.color || "-" }}</td>
+            </tr>
+            <tr>
+              <td>Transmission</td>
+              <td>{{ car?.transmission || "-" }}</td>
+            </tr>
+            <tr>
+              <td>Engine Type</td>
+              <td>{{ car?.engine_type || "-" }}</td>
+            </tr>
+            <tr>
+              <td>Features</td>
+              <td>{{ car?.features || "-" }}</td>
+            </tr>
 
-          <tr>
-            <td>Performance</td>
-            <td>{{ car?.performance || "-" }}</td>
-          </tr>
-          <tr>
-            <td>Safety</td>
-            <td>{{ car?.safety || "-" }}</td>
-          </tr>
-          <tr>
-            <td>Available</td>
-            <td>{{ car?.is_available ? "Available" : "Not Available" }}</td>
-          </tr>
-          <tr>
-            <td>Booked</td>
-            <td>{{ car?.is_booked ? "Booked" : "Available" }}</td>
-          </tr>
-          <tr>
-            <td>Sold</td>
-            <td>{{ car?.is_sold ? "Sold" : "Available" }}</td>
-          </tr>
-        </table>
+            <tr>
+              <td>Performance</td>
+              <td>{{ car?.performance || "-" }}</td>
+            </tr>
+            <tr>
+              <td>Safety</td>
+              <td>{{ car?.safety || "-" }}</td>
+            </tr>
+            <tr>
+              <td>Available</td>
+              <td>{{ car?.is_available ? "Available" : "Not Available" }}</td>
+            </tr>
+            <tr>
+              <td>Booked</td>
+              <td>{{ car?.is_booked ? "Booked" : "Available" }}</td>
+            </tr>
+            <tr>
+              <td>Sold</td>
+              <td>{{ car?.is_sold ? "Sold" : "Available" }}</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>

@@ -1,18 +1,19 @@
 import {
   Component,
-  computed,
-  effect,
   ElementRef,
   inject,
-  Input,
   OnInit,
   Signal,
   viewChild,
-  WritableSignal,
 } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { User, UserResetPassword, UserUpdate } from '../../models/user.model';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { CommentService } from '../../services/comment.service';
@@ -53,6 +54,18 @@ export class UserProfileComponent implements OnInit {
     otp: [this.user?.email, [Validators.required, Validators.email]],
   });
 
+  commentsFormGroup = this.fb.group({
+    comments: this.fb.array([]),
+  });
+  get commentsFormArray() {
+    return this.commentsFormGroup.get('comments') as FormArray;
+  }
+  initializeCommentsFormArray() {
+    this.comments.forEach((comment) => {
+      this.commentsFormArray.push(this.fb.control(comment.body));
+    });
+  }
+
   toggleEditProfile() {
     this.editMode = !this.editMode;
     this.editBtnTitle = !this.editMode ? 'Edit Profile' : 'Save Changes';
@@ -77,6 +90,7 @@ export class UserProfileComponent implements OnInit {
             this.initializeProfileForm();
             return comment.user_id === this.authService.currentUserSig()?.id;
           });
+          this.initializeCommentsFormArray();
         })
       )
       .subscribe();
@@ -150,11 +164,32 @@ export class UserProfileComponent implements OnInit {
       console.log('form is not valid');
     }
   }
-  editComment(comment: IComment): void {
-    // this.commentService.updateComment()
-    console.log('edit', comment);
+  editComment(comment: IComment, index: number): void {
+    if (comment.isEdit) {
+      comment.isEdit = false;
+      if (this.user && this.user.id) {
+        this.commentService
+          .updateComment(comment.id, {
+            user_id: this.user.id,
+            body: this.commentsFormArray.value[index] || '',
+          })
+          .subscribe({
+            next: () => this.getAllComments(),
+            error: () => {
+              console.error('Failed to updateComment');
+            },
+          });
+      }
+    } else {
+      comment.isEdit = true;
+    }
   }
   deleteComment(comment: IComment): void {
+    this.commentService.deleteComment(comment.id, comment.user_id).subscribe({
+      next: () => {
+        this.getAllComments();
+      },
+    });
     console.log('delete', comment);
   }
 }

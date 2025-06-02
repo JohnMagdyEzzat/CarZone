@@ -137,3 +137,9 @@
 .comment-card:hover .btn-container {
   right: 0px;
 }
+
+.comment-card-input{
+  padding: 0.3rem;
+  width: 100%;
+  font-family: inherit;
+}

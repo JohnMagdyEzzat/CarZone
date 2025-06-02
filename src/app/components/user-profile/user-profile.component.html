@@ -64,7 +64,11 @@
           </div>
           <div class="form-group otp">
             <label for="confirmPassword">Confirm password</label>
-            <input type="text" formControlName="confirmPassword" id="confirmPassword" />
+            <input
+              type="text"
+              id="confirmPassword"
+              formControlName="confirmPassword"
+            />
           </div>
           <div class="form-group otp">
             <label for="OTP">OTP</label>
@@ -78,15 +82,29 @@
     </div>
   </div>
 
-  <div class="profile-comments">
-    <div class="container">
+  <div class="profile-comments" [formGroup]="commentsFormGroup">
+    <div class="container" formArrayName="comments">
       <h2>Comments</h2>
-      @for (comment of comments; track $index) {
+      @for (comment of comments; track $index;let i=$index) {
       <div class="comment-card">
+        @if (comment.isEdit) {
+        <input
+          class="comment-card-input"
+          type="text"
+          id="comment {{ i }}"
+          [value]="comment.body"
+          [formControlName]="i"
+        />
+        }@else {
         <p>{{ comment.body }}</p>
+        }
         <div class="btn-container">
-          <button class="btn" (click)="editComment(comment)">Edit</button>
-          <button class="btn-delete" (click)="deleteComment(comment)">Delete</button>
+          <button class="btn" (click)="editComment(comment, i)">
+            @if (comment.isEdit) { Save }@else { Edit }
+          </button>
+          <button class="btn-delete" (click)="deleteComment(comment)">
+            Delete
+          </button>
         </div>
       </div>
       }

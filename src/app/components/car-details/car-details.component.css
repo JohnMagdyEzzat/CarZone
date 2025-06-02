@@ -58,6 +58,15 @@
 .car-details-info-table {
   display: flex;
   justify-content: center;
+  height: 500px;
+  overflow-y: scroll;
+}
+.car-details-info-table table{
+  border-collapse: collapse;
+}
+.car-details-info-table table td{
+  padding: 2rem;
+  border-bottom: 1px solid black;
 }
 
 .purchase-button {
@@ -65,7 +74,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  width: 100%;
+  padding: 2rem;
+  position: fixed;
+  bottom: 0;
+  background-color: rgba(0, 255, 170, 0.548);
+  border-top-right-radius: 70px;
+  border-top-left-radius: 70px;
+}
+
+.status-message{
+  margin-top: 1rem;
 }
 
 .button {
@@ -96,4 +115,14 @@
   color: white;
   cursor: not-allowed;
   border: 2px solid red;
+}
+
+.car-details-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.car-details-content{
+  margin-bottom: 10rem;
 }

@@ -4,6 +4,7 @@ export interface IComment {
   body: string;
   created_at: string;
   updated_at: string;
+  isEdit?:boolean;
 }
 
 export interface ICommentCreation {
@@ -23,10 +24,6 @@ export interface ICommentCreationResponse {
 }
 
 export interface ICommentUpdate {
-  fname: string;
-  lname: string;
-  email: string;
-  password: string;
-  phone_no: string;
-  address: string;
+  user_id: number;
+  body: string;
 }

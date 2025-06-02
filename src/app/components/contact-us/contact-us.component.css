@@ -23,16 +23,19 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 2rem;
+  margin-top: 2rem;
   gap: 1em;
+  background-color: rgba(0, 255, 170, 0.548);
+  padding: 2rem 0;
+  width: 100%;
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
 }
 .email-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: rgb(224, 226, 219);
-  padding: 2rem;
-  width: 70vw;
+  width: 100%;
   min-height: 40vh;
   gap: 0.7em;
 }
@@ -58,7 +61,8 @@
   font-weight: 600;
   font-size: 12px;
 }
-.form-group input, .form-group textarea{
+.form-group input,
+.form-group textarea {
   width: 100%;
   padding: 12px 16px;
   border-radius: 8px;
@@ -68,10 +72,10 @@
   resize: none;
 }
 
-.form-group textarea{
+.form-group textarea {
   height: 96px;
 }
-.form .submit-btn{
+.form .submit-btn {
   font-family: inherit;
   color: #ffffff;
   font-weight: 600;
