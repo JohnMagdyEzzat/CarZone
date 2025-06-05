@@ -1,0 +1,81 @@
+.details-container {
+    position: fixed;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    height: 70vh;
+    width: 70%;
+    margin-top: 15vh;
+    margin-left: 15%;
+    display: flex;
+    align-items: center;
+    background-color: rgba(230, 228, 228, 0.8);
+    backdrop-filter: blur(3px);
+    border-radius: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.089);
+}
+
+.close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    margin: 2rem;
+    cursor: pointer;
+}
+
+.event-details{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    padding-top: 2rem;
+}
+
+.event-name{
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.contents-container{
+    display: flex;
+    gap: 1rem;
+}
+
+.event-header{
+    font-size: 1.6rem;
+    font-weight: 500;
+    display: block;
+}
+
+.event-text{
+    font-weight: 300;
+}
+
+.location-container{
+    display: flex;
+    gap: 2rem;
+}
+.event-actions{
+    align-self: end;
+    margin-right: 10rem;
+    display: flex;
+    gap: 1rem;
+}
+.event-actions button{
+    padding: 0.5rem 2.2rem;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border: 1px solid black;
+}
+
+.event-actions .button-delete{
+    background-color: red;
+}
+.event-actions .button-edit{
+    background-color: darkkhaki;
+}

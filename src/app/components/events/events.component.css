@@ -1,0 +1,12 @@
+.eventsContainer {
+  padding-top: 7em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 65%;
+  margin: auto;
+}
+
+.page-title{
+  font-size: 3em;
+}

@@ -21,7 +21,7 @@ export class LoginService {
   private logoutURL = environment.apiUrl + 'logout';
   private resetPasswordURL = environment.apiUrl + 'reset-password';
   private forgotPasswordURL = environment.apiUrl + 'forgot-password';
-  private usersURL = environment.apiUrl + 'users';
+  private usersURL = environment.apiUrl + 'users/';
 
   constructor() {}
 
@@ -46,10 +46,10 @@ export class LoginService {
   }
 
   public getUserById(userId: number) {
-    return this.http.get<{ data: User }>(`${this.usersURL}/${userId}`);
+    return this.http.get<{ data: User }>(`${this.usersURL}${userId}`);
   }
 
   public updateUser(userId: number, userData: UserUpdate) {
-    return this.http.put<{ data: User }>(`${this.usersURL}/${userId}`, userData);
+    return this.http.put<{ data: User }>(`${this.usersURL}${userId}`, userData);
   }
 }

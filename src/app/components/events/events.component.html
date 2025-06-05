@@ -1,0 +1,12 @@
+<div class="eventsContainer">
+  <h2 class="page-title">Events</h2>
+  <hr>
+  <div class="eventActions">
+    <button>qwe</button>
+  </div>
+  <div class="eventList">
+    @for (event of events; track $index) {
+    <app-event-list [event]="event"></app-event-list>
+    }
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="details-container">
+  <div class="close" (click)="closeWindow()">X</div>
+  <div class="event-details">
+    <div>
+      <span class="event-name">
+        {{ event.event_name }}
+      </span>
+      <div class="contents-container">
+        @for (content of eventContent; track $index; let i=$index) {
+        <app-pill
+          pillStyle="small"
+          [colorIndex]="i"
+          [text]="eventContent[i]"
+        ></app-pill>
+        }
+      </div>
+    </div>
+
+    <div>
+      <span class="event-header"> Description </span>
+      <span class="event-text">
+        {{ event.event_description }}
+      </span>
+    </div>
+
+    <div>
+        <span class="event-header">Location And Time </span>
+        <div class="location-container">
+            <span class="event-text">
+              {{ event.event_location }}
+            </span>
+            <span class="event-text">{{ event.event_date | date:"EEEE d MMM yyyy" }}</span>
+            <span class="event-text">{{ eventTime }}</span>
+        </div>
+    </div>
+    <div>
+        <span class="event-header">Status</span>
+        <span class="event-text">{{ event.event_status.toLocaleUpperCase() }}</span>
+    </div>
+    <div>
+        <span class="event-header">Event ID</span>
+        <span class="event-text">{{ event.id }}</span>
+    </div>
+  </div>
+  <div class="event-actions">
+    <button class="button-edit">Edit</button>
+    <button class="button-delete">Delete</button>
+  </div>
+</div>

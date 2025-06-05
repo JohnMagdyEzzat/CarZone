@@ -37,3 +37,7 @@ body {
 .pointer{
   cursor: pointer;
 }
+
+.overflow-none{
+  overflow: hidden;
+}

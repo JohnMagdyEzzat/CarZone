@@ -71,8 +71,14 @@ export class UserProfileComponent implements OnInit {
     this.editBtnTitle = !this.editMode ? 'Edit Profile' : 'Save Changes';
     if (!this.editMode && this.user) {
       const userId = this.user.id;
-      console.log('here');
-      this.loginService.updateUser(userId, this.updateUserPayload).subscribe();
+      this.loginService.updateUser(userId, this.updateUserPayload)
+      .pipe(tap((res)=>{
+        if (res) {
+          this.user = res.data;
+          this.initializeProfileForm();
+        }
+      }))
+      .subscribe();
     }
   }
 
@@ -85,9 +91,9 @@ export class UserProfileComponent implements OnInit {
       .getAllComments()
       .pipe(
         tap((res) => {
+          this.user = this.authService.currentUserSig();
+          this.initializeProfileForm();
           this.comments = res.data.filter((comment) => {
-            this.user = this.authService.currentUserSig();
-            this.initializeProfileForm();
             return comment.user_id === this.authService.currentUserSig()?.id;
           });
           this.initializeCommentsFormArray();
@@ -190,6 +196,5 @@ export class UserProfileComponent implements OnInit {
         this.getAllComments();
       },
     });
-    console.log('delete', comment);
   }
 }

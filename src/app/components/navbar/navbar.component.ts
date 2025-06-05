@@ -38,6 +38,8 @@ export class NavbarComponent implements OnInit {
           },
           error: (error) => {
             this.authService.currentUserSig.set(null);
+            localStorage.removeItem('id');
+            localStorage.removeItem('token');
           },
         });
     }

@@ -1,4 +1,8 @@
 .contact-container {
+  position: relative;
+  min-height: 100vh;
+}
+.content-data {
   padding-top: 7rem;
   margin: 0 20rem;
 }
@@ -9,7 +13,7 @@
   height: 30vh;
 }
 
-.contact-container app-map-display {
+.content-data app-map-display {
   display: flex;
   align-items: center;
 
@@ -30,6 +34,8 @@
   width: 100%;
   border-top-right-radius: 50px;
   border-top-left-radius: 50px;
+  position: absolute;
+  bottom: 0px;
 }
 .email-box {
   display: flex;
