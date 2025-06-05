@@ -22,7 +22,7 @@ export const routes: Routes = [
   { path: 'cars/:carId', component: CarDetailsComponent },
   { path: 'contact', component: ContactUsComponent },
   { path: 'profile', component: UserProfileComponent },
-  { path: 'events', component: EventsComponent },
+  { path: 'events', component: EventsComponent, canActivate: [loginGuard] },
   { path: 'soon', component: SoonComponent },
   { path: '**', component: HomeComponent },
 ];

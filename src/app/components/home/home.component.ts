@@ -13,7 +13,6 @@ import { CommentsComponent } from "../comments/comments.component";
     WelcomeComponent,
     TopCarsComponent,
     ServicesComponent,
-    ContactUsComponent,
     CommentsComponent
 ],
 })

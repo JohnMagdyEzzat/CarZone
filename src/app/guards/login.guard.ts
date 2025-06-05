@@ -18,7 +18,12 @@ export class loginGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): MaybeAsync<GuardResult> {
-    if (this.authService.isAuthenticated()) {
+    const isUserAuthenticated = this.authService.isAuthenticated();
+    if (route.routeConfig?.path === 'events' && !isUserAuthenticated) {
+      this.router.navigate(['/login']);
+      return false;
+    }
+    if (route.routeConfig?.path !== 'events' && isUserAuthenticated) {
       this.router.navigate(['/']);
       return false;
     } else {
