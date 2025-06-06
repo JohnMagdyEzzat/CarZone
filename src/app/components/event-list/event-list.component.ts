@@ -1,8 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IEvent } from '../../models/event';
 import { CommonModule } from '@angular/common';
 import { PillComponent } from '../pill/pill.component';
-import { pillColors } from '../../models/pill-colors';
 import { EventListDetailsComponent } from '../event-list-details/event-list-details.component';
 
 @Component({
@@ -13,6 +12,7 @@ import { EventListDetailsComponent } from '../event-list-details/event-list-deta
 })
 export class EventListComponent {
   @Input({ required: true }) event!: IEvent;
+  @Output() reloadEvents: EventEmitter<boolean> = new EventEmitter();
   today = Date.now();
   colorIndex = 0;
   viewDetails = false;
@@ -46,5 +46,6 @@ export class EventListComponent {
   onCloseWindow(close: boolean) {
     this.viewDetails = close;
     document.body.classList.remove('overflow-none');
+    this.reloadEvents.emit(true);
   }
 }

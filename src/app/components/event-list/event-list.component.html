@@ -12,7 +12,7 @@
         @for (content of eventContent; track $index; let i=$index) {
         <app-pill
           pillStyle="small"
-          [colorIndex]="i"
+          [colorIndex]="i % 6"
           [text]="eventContent[i]"
         ></app-pill>
         }
@@ -104,7 +104,6 @@
     class="event-details"
     (close)="onCloseWindow($event)"
     [event]="event"
-    [eventContent]="eventContent"
     [eventTime]="eventTime"
   ></app-event-list-details>
   }

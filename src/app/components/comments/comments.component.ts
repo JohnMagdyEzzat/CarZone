@@ -32,7 +32,7 @@ export class CommentsComponent implements OnInit, OnDestroy {
       .getAllComments()
       .pipe(
         tap((res) => {
-          this.comments = res.data.slice(2);
+          this.comments = res.data;
         })
       )
       .subscribe();

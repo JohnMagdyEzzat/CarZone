@@ -26,11 +26,11 @@ export class EventService {
     return this.http.get(this.eventsURL + eventID);
   }
 
-  public updateEvent(eventID: string, event: IEvent) {
+  public updateEvent(eventID: number, event: IEvent) {
     return this.http.put(this.eventsURL + eventID, event);
   }
 
-  public deleteEvent(eventID: string) {
+  public deleteEvent(eventID: number) {
     return this.http.delete(this.eventsURL + eventID);
   }
 }
