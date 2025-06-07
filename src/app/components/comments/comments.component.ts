@@ -1,9 +1,4 @@
-import {
-  Component,
-  inject,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommentService } from '../../services/comment.service';
 import { Subscription, tap } from 'rxjs';
 import { IComment, ICommentCreation } from '../../models/comment';
@@ -28,6 +23,10 @@ export class CommentsComponent implements OnInit, OnDestroy {
   userComment = '';
 
   ngOnInit(): void {
+    this.getAllComments();
+  }
+
+  getAllComments(): void {
     this.commentService
       .getAllComments()
       .pipe(
@@ -43,6 +42,7 @@ export class CommentsComponent implements OnInit, OnDestroy {
     if (userLogged !== '') {
       this.addCommentWindow = true;
     } else {
+      this.router.navigate(['/login']);
     }
   }
   onCancelComment(): void {
@@ -56,6 +56,7 @@ export class CommentsComponent implements OnInit, OnDestroy {
     };
     this.commentService.createComment(commentPayload).subscribe({
       next: () => {
+        this.getAllComments();
         this.addCommentWindow = false;
         this.commentAddedError = false;
         this.commentAddedSuccess = true;

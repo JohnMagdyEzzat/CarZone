@@ -185,7 +185,7 @@
         }"
         id="password_field"
         (input)="
-          resetPasswordForm.controls.confirmPassword.updateValueAndValidity()
+          resetPasswordForm.controls.password_confirmation.updateValueAndValidity()
         "
       />
     </div>
@@ -193,7 +193,13 @@
       @if (!resetPasswordForm.valid && resetPasswordForm.touched) {
       @if(resetPasswordForm.controls.password.errors?.['required']){
       <p>Password is required</p>
-      }}
+      }@else if(resetPasswordForm.controls.password.errors?.['pattern']){
+      <p>password must contain 1 number (0-9)</p>
+      <p>password must contain 1 uppercase letters</p>
+      <p>password must contain 1 lowercase letters</p>
+      <p>password must contain 1 non-alpha numeric number</p>
+      <p>password is 8-16 characters with no space</p>
+      } }
     </div>
 
     <div class="input_container">
@@ -226,12 +232,12 @@
       <input
         placeholder="Confirm Password"
         title="Confirm Password"
-        formControlName="confirmPassword"
+        formControlName="password_confirmation"
         type="password"
         [ngClass]="{
           input_field: true,
           input_field_error:
-            resetPasswordForm.controls.confirmPassword.errors &&
+            resetPasswordForm.controls.password_confirmation.errors &&
             resetPasswordForm.touched
         }"
         id="confirm_Password_field"
@@ -239,10 +245,10 @@
     </div>
     <div class="input_error">
       @if (!resetPasswordForm.valid && resetPasswordForm.touched) {
-      @if(resetPasswordForm.controls.confirmPassword.errors?.['required']){
+      @if(resetPasswordForm.controls.password_confirmation.errors?.['required']){
       <p>Confirm Password is required</p>
       }@else if(
-      resetPasswordForm.controls.confirmPassword.errors?.['passwordMismatch'] ){
+      resetPasswordForm.controls.password_confirmation.errors?.['passwordMismatch'] ){
       <p>Passwords do not match</p>
       } }
     </div>

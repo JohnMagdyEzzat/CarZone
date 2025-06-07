@@ -14,18 +14,22 @@ export class CommentsCardsComponent {
 
   activeCircle = 0;
 
-  nextComment(btn: HTMLButtonElement): void {
+  nextComment(btn?: HTMLButtonElement, noOfMovements: number = 1): void {
     const elementRef = this.commentCards() as ElementRef;
     const element = window.getComputedStyle(elementRef.nativeElement);
 
-    const elementWidth = Number(element.width.replace('px', ''));
-    const elementPadding = Number(element.paddingRight.replace('px', ''));
-    const elementBorder = Number(element.borderWidth.replace('px', ''));
-    const elementMargin = Number(element.marginRight.replace('px', ''));
+    const elementWidth =
+      Number(element.width.replace('px', '')) * noOfMovements;
+    const elementPadding =
+      Number(element.paddingRight.replace('px', '')) * noOfMovements;
+    const elementBorder =
+      Number(element.borderWidth.replace('px', '')) * noOfMovements;
+    const elementMargin =
+      Number(element.marginRight.replace('px', '')) * noOfMovements;
 
     (this.commentCards() as ElementRef).nativeElement.parentNode.scrollLeft +=
       elementWidth + elementPadding * 2 + elementBorder * 2 + elementMargin;
-    if (this.activeCircle + 1 < this.comments.length) {
+    if (btn && this.activeCircle + 1 < this.comments.length) {
       btn.disabled = true;
       this.activeCircle++;
       setTimeout(() => {
@@ -34,18 +38,22 @@ export class CommentsCardsComponent {
     }
   }
 
-  previousComment(btn: HTMLButtonElement): void {
+  previousComment(btn?: HTMLButtonElement, noOfMovements: number = 1): void {
     const elementRef = this.commentCards() as ElementRef;
     const element = window.getComputedStyle(elementRef.nativeElement);
 
-    const elementWidth = Number(element.width.replace('px', ''));
-    const elementPadding = Number(element.paddingRight.replace('px', ''));
-    const elementBorder = Number(element.borderWidth.replace('px', ''));
-    const elementMargin = Number(element.marginRight.replace('px', ''));
+    const elementWidth =
+      Number(element.width.replace('px', '')) * noOfMovements;
+    const elementPadding =
+      Number(element.paddingRight.replace('px', '')) * noOfMovements;
+    const elementBorder =
+      Number(element.borderWidth.replace('px', '')) * noOfMovements;
+    const elementMargin =
+      Number(element.marginRight.replace('px', '')) * noOfMovements;
 
     (this.commentCards() as ElementRef).nativeElement.parentNode.scrollLeft -=
       elementWidth + elementPadding * 2 + elementBorder * 2 + elementMargin;
-    if (this.activeCircle > 0) {
+    if (btn && this.activeCircle > 0) {
       btn.disabled = true;
       this.activeCircle--;
       setTimeout(() => {
@@ -55,6 +63,17 @@ export class CommentsCardsComponent {
   }
 
   activateCircle(id: number): void {
+    if (id > this.activeCircle) {
+      const noOfMovements = id - this.activeCircle;
+      for (let i = 0; i < noOfMovements; i++) {
+        this.nextComment(undefined, noOfMovements);
+      }
+    } else if (id < this.activeCircle) {
+      const noOfMovements = this.activeCircle - id;
+      for (let i = 0; i < noOfMovements; i++) {
+        this.previousComment(undefined, noOfMovements);
+      }
+    }
     this.activeCircle = id;
   }
 }

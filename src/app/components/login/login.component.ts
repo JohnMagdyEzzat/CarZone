@@ -44,8 +44,16 @@ export class LoginComponent implements OnInit {
   });
   resetPasswordForm = this.fb.group({
     otp: ['', [Validators.required, Validators.pattern(/^[0-9]{6}$/)]],
-    password: ['', [Validators.required]],
-    confirmPassword: [
+    password: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(
+          /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/
+        ),
+      ],
+    ],
+    password_confirmation: [
       '',
       [Validators.required, LoginValidators.passwordMatchValidator()],
     ],

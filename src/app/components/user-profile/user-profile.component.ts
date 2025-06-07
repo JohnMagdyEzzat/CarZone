@@ -33,8 +33,6 @@ export class UserProfileComponent implements OnInit {
   fb = inject(FormBuilder);
   commentService = inject(CommentService);
 
-  resetPasswordDiv: Signal<ElementRef | undefined> = viewChild('resetPassword');
-
   comments: IComment[] = [];
   user?: User | null;
   editBtnTitle: string = 'Edit Profile';
@@ -48,38 +46,12 @@ export class UserProfileComponent implements OnInit {
     phone: [this.user?.phone_no, [Validators.required]],
     address: [this.user?.address, [Validators.required]],
   });
-  resetPasswordForm = this.fb.group({
-    password: [this.user?.name.split(' ')[0], [Validators.required]],
-    confirmPassword: [this.user?.name.split(' ')[1], [Validators.required]],
-    otp: [this.user?.email, [Validators.required, Validators.email]],
-  });
 
   commentsFormGroup = this.fb.group({
     comments: this.fb.array([]),
   });
   get commentsFormArray() {
     return this.commentsFormGroup.get('comments') as FormArray;
-  }
-  initializeCommentsFormArray() {
-    this.comments.forEach((comment) => {
-      this.commentsFormArray.push(this.fb.control(comment.body));
-    });
-  }
-
-  toggleEditProfile() {
-    this.editMode = !this.editMode;
-    this.editBtnTitle = !this.editMode ? 'Edit Profile' : 'Save Changes';
-    if (!this.editMode && this.user) {
-      const userId = this.user.id;
-      this.loginService.updateUser(userId, this.updateUserPayload)
-      .pipe(tap((res)=>{
-        if (res) {
-          this.user = res.data;
-          this.initializeProfileForm();
-        }
-      }))
-      .subscribe();
-    }
   }
 
   ngOnInit(): void {
@@ -102,6 +74,12 @@ export class UserProfileComponent implements OnInit {
       .subscribe();
   }
 
+  initializeCommentsFormArray() {
+    this.comments.forEach((comment) => {
+      this.commentsFormArray.push(this.fb.control(comment.body));
+    });
+  }
+
   initializeProfileForm() {
     this.profileForm.patchValue({
       fname: this.user?.name.split(' ')[0],
@@ -113,18 +91,13 @@ export class UserProfileComponent implements OnInit {
   }
 
   logout() {
-    this.loginService.logout(this.forgotPasswordPayload).subscribe();
+    this.loginService.logout(this.logoutPayload).subscribe();
     localStorage.setItem('token', '');
     localStorage.setItem('id', '');
     this.authService.currentUserSig.set(null);
     this.router.navigateByUrl('/');
   }
-  get forgotPasswordPayload() {
-    return {
-      email: this.authService.currentUserSig()?.email || '',
-      token: localStorage.getItem('token') || '',
-    };
-  }
+
   get updateUserPayload(): UserUpdate {
     return {
       fname:
@@ -136,40 +109,7 @@ export class UserProfileComponent implements OnInit {
       address: this.profileForm.value.address || this.user?.address || '',
     };
   }
-  get resetPasswordPayload(): UserResetPassword {
-    return {
-      password: this.resetPasswordForm.value.password || '',
-      password_confirmation: this.resetPasswordForm.value.confirmPassword || '',
-      otp: this.resetPasswordForm.value.otp || '',
-      email: this.user?.email || '',
-    };
-  }
 
-  forgetPassword() {
-    this.loginService
-      .forgotPassword({ email: this.forgotPasswordPayload.email })
-      .subscribe();
-
-    this.resetPasswordDiv()!.nativeElement.style.height = '150px';
-
-    this.isResetPassword = true;
-  }
-
-  onResetPassword() {
-    if (this.resetPasswordForm.valid) {
-      this.loginService.resetPassword(this.resetPasswordPayload).subscribe({
-        next: () => {
-          this.resetPasswordDiv()!.nativeElement.style.height = '0px';
-          this.isResetPassword = false;
-        },
-        error: () => {
-          console.error('Failed to call reset password api');
-        },
-      });
-    } else {
-      console.log('form is not valid');
-    }
-  }
   editComment(comment: IComment, index: number): void {
     if (comment.isEdit) {
       comment.isEdit = false;
@@ -190,11 +130,38 @@ export class UserProfileComponent implements OnInit {
       comment.isEdit = true;
     }
   }
+
   deleteComment(comment: IComment): void {
     this.commentService.deleteComment(comment.id, comment.user_id).subscribe({
       next: () => {
         this.getAllComments();
       },
     });
+  }
+
+  toggleEditProfile() {
+    this.editMode = !this.editMode;
+    this.editBtnTitle = !this.editMode ? 'Edit Profile' : 'Save Changes';
+    if (!this.editMode && this.user) {
+      const userId = this.user.id;
+      this.loginService
+        .updateUser(userId, this.updateUserPayload)
+        .pipe(
+          tap((res) => {
+            if (res) {
+              this.user = res.data;
+              this.initializeProfileForm();
+            }
+          })
+        )
+        .subscribe();
+    }
+  }
+
+  get logoutPayload() {
+    return {
+      email: this.authService.currentUserSig()?.email || '',
+      token: localStorage.getItem('token') || '',
+    };
   }
 }
