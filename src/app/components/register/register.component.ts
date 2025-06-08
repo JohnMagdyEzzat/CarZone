@@ -67,8 +67,24 @@ export class RegisterComponent implements OnInit {
     ],
     email: ['', [Validators.required, Validators.email]],
     passwordGroup: this.fb.group({
-      password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/
+          ),
+        ],
+      ],
+      confirmPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/
+          ),
+        ],
+      ],
     }),
     phoneNo: [
       '',
@@ -88,6 +104,8 @@ export class RegisterComponent implements OnInit {
     address: 'Address',
     state: 'State',
   };
+
+  emailOrPhoneTaken = false;
 
   constructor() {}
 
@@ -111,7 +129,17 @@ export class RegisterComponent implements OnInit {
             }
           })
         )
-        .subscribe();
+        .subscribe({
+          next: () => {},
+          error: (error) => {
+            console.log(error);
+            if (error.error.errors.email || error.errors.phone_no) {
+              this.emailOrPhoneTaken = true;
+            } else {
+              console.log('unexpected error happened in register API');
+            }
+          },
+        });
     }
   }
 

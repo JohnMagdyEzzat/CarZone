@@ -50,7 +50,12 @@ export class FormService {
       return 'Passwords do not match';
     }
     if (control.errors?.['pattern']) {
-      return `Invalid format for ${controlName}`;
+      if(control.errors?.['pattern'].requiredPattern ===
+        '/^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,16}$/'){
+          return `${controlName} should include 1 capital letter, small letter, number, symbol, and be from 8 to 16 characters without spaces`;
+        }else{
+          return `Invalid format for ${controlName}`;
+        }
     }
     if (control.errors?.['startWithZero']) {
       return `${controlName} should start with 0`;

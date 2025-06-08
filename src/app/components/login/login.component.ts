@@ -69,6 +69,7 @@ export class LoginComponent implements OnInit {
   restoreAccountMode = false;
   wrongOTP = false;
   resetSuccess = false;
+  loginError = false;
 
   constructor() {}
 
@@ -88,7 +89,15 @@ export class LoginComponent implements OnInit {
             }
           })
         )
-        .subscribe();
+        .subscribe({
+          error: (err) => {
+            if (err.error.error === 'Unauthorized') {
+              this.loginError = true;
+            } else {
+              console.log('Unknown error happened while calling Login API');
+            }
+          },
+        });
     }
   }
 

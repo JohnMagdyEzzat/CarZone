@@ -86,9 +86,9 @@
     <br />
 
     @if (wrongOTP) {
-      <div>
-        <span class="red-text">Your OTP is worng please try again!</span>
-      </div>
+    <div>
+      <span class="red-text">Your OTP is worng please try again!</span>
+    </div>
     }
 
     <div class="input_container">
@@ -292,9 +292,13 @@
     <br />
 
     @if (resetSuccess) {
-      <div>
-        <span class="green-text">Your password has been set successfully!</span>
-      </div>
+    <div>
+      <span class="green-text">Your password has been set successfully!</span>
+    </div>
+    } @if(loginError){
+    <div>
+      <span class="red-text">Wrong email or password!</span>
+    </div>
     }
 
     <div class="input_container">
