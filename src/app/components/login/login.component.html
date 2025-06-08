@@ -185,7 +185,7 @@
         }"
         id="password_field"
         (input)="
-          resetPasswordForm.controls.password_confirmation.updateValueAndValidity()
+          resetPasswordForm.controls.confirmPassword.updateValueAndValidity()
         "
       />
     </div>
@@ -232,12 +232,12 @@
       <input
         placeholder="Confirm Password"
         title="Confirm Password"
-        formControlName="password_confirmation"
+        formControlName="confirmPassword"
         type="password"
         [ngClass]="{
           input_field: true,
           input_field_error:
-            resetPasswordForm.controls.password_confirmation.errors &&
+            resetPasswordForm.controls.confirmPassword.errors &&
             resetPasswordForm.touched
         }"
         id="confirm_Password_field"
@@ -245,10 +245,10 @@
     </div>
     <div class="input_error">
       @if (!resetPasswordForm.valid && resetPasswordForm.touched) {
-      @if(resetPasswordForm.controls.password_confirmation.errors?.['required']){
+      @if(resetPasswordForm.controls.confirmPassword.errors?.['required']){
       <p>Confirm Password is required</p>
       }@else if(
-      resetPasswordForm.controls.password_confirmation.errors?.['passwordMismatch'] ){
+      resetPasswordForm.controls.confirmPassword.errors?.['passwordMismatch'] ){
       <p>Passwords do not match</p>
       } }
     </div>

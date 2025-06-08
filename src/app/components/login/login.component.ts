@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
         ),
       ],
     ],
-    password_confirmation: [
+    confirmPassword: [
       '',
       [Validators.required, LoginValidators.passwordMatchValidator()],
     ],
@@ -97,6 +97,15 @@ export class LoginComponent implements OnInit {
     };
   }
 
+  get resetPayload(): UserResetPassword {
+    return {
+      otp: this.resetPasswordForm.value.otp || '',
+      password: this.resetPasswordForm.value.password || '',
+      password_confirmation: this.resetPasswordForm.value.confirmPassword || '',
+      email: this.restoreAccountForm.value.email || '',
+    };
+  }
+
   toggleFormView(mode: string) {
     this.currentForm().touched = true;
     if (mode === 'reset') {
@@ -113,13 +122,7 @@ export class LoginComponent implements OnInit {
       this.restoreAccountMode = false;
     }
     if (mode === 'login' && this.currentForm().valid) {
-      const email = this.restoreAccountForm.value.email || '';
-      this.loginService
-        .resetPassword({
-          ...(this.currentForm().value as UserResetPassword),
-          email,
-        })
-        .subscribe();
+      this.loginService.resetPassword(this.resetPayload).subscribe();
       this.forgotBtnTitle = 'Forget Password';
       this.resetPasswordMode = false;
       this.restoreAccountMode = false;

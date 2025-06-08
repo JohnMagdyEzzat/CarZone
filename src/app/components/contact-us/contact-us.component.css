@@ -34,8 +34,8 @@
   width: 100%;
   border-top-right-radius: 50px;
   border-top-left-radius: 50px;
-  position: absolute;
-  bottom: 0px;
+  position: relative;
+  bottom: -11rem;
 }
 .email-box {
   display: flex;
