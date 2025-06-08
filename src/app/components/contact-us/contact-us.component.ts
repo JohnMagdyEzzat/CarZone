@@ -25,6 +25,7 @@ export class ContactUsComponent implements OnInit {
   });
   emailSentNotification = false;
   failToSendNotification = false;
+  failedEmailSendingNotification = false;
 
   constructor() {}
 
@@ -44,10 +45,15 @@ export class ContactUsComponent implements OnInit {
     this.failToSendNotification = false;
 
     if (this.emailForm.valid) {
-      console.log(this.emailForm.value);
-      this.contactService.sendEmail(this.emailForm.value).subscribe();
-      this.emailSentNotification = true;
-      this.emailForm.reset();
+      this.contactService.sendEmail(this.emailForm.value).subscribe({
+        next: () => {
+          this.emailSentNotification = true;
+          this.emailForm.reset();
+        },
+        error: () => {
+          this.failedEmailSendingNotification = true;
+        },
+      });
     } else {
       console.error('nameErrors', this.emailForm.controls.name.errors);
       console.error('emailErrors', this.emailForm.controls.email.errors);

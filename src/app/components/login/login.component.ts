@@ -67,6 +67,8 @@ export class LoginComponent implements OnInit {
   forgotBtnTitle = 'Forgot Password';
   resetPasswordMode = false;
   restoreAccountMode = false;
+  wrongOTP = false;
+  resetSuccess = false;
 
   constructor() {}
 
@@ -120,17 +122,31 @@ export class LoginComponent implements OnInit {
       this.forgotBtnTitle = 'Reset Password';
       this.resetPasswordMode = true;
       this.restoreAccountMode = false;
+      this.wrongOTP = false;
     }
     if (mode === 'login' && this.currentForm().valid) {
-      this.loginService.resetPassword(this.resetPayload).subscribe();
-      this.forgotBtnTitle = 'Forget Password';
-      this.resetPasswordMode = false;
-      this.restoreAccountMode = false;
+      this.loginService.resetPassword(this.resetPayload).subscribe({
+        next: () => {
+          this.forgotBtnTitle = 'Forget Password';
+          this.resetPasswordMode = false;
+          this.restoreAccountMode = false;
+          this.wrongOTP = false;
+          this.resetSuccess = true;
+        },
+        error: (error) => {
+          if (error.error.message === 'Invalid otp') {
+            this.wrongOTP = true;
+          } else {
+            console.log('some error happened in resetPassword API call');
+          }
+        },
+      });
     }
     if (mode === 'cancel') {
       this.forgotBtnTitle = 'Forget Password';
       this.resetPasswordMode = false;
       this.restoreAccountMode = false;
+      this.wrongOTP = false;
     }
   }
 

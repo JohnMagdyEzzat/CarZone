@@ -7,7 +7,7 @@ import { contactEmailPayload } from '../models/contact';
   providedIn: 'root',
 })
 export class ContactService {
-  private baseURL = environment.apiUrl + '/contact';
+  private baseURL = environment.apiUrl + 'contact/';
   private http = inject(HttpClient);
   constructor() {}
   sendEmail(payload: contactEmailPayload) {

@@ -46,6 +46,8 @@
         <p>Your inquiry has been sent successfully!</p>
         } @if (failToSendNotification) {
         <p>Please fill missing data and try again!</p>
+        } @if(failedEmailSendingNotification){
+        <p>Something happed from our side! please try again!</p>
         }
       </form>
     </div>

@@ -165,3 +165,10 @@
   align-self: start;
   color: red;
 }
+
+.red-text {
+  color: red;
+}
+.green-text {
+  color: green;
+}

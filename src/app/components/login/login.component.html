@@ -85,6 +85,12 @@
     </div>
     <br />
 
+    @if (wrongOTP) {
+      <div>
+        <span class="red-text">Your OTP is worng please try again!</span>
+      </div>
+    }
+
     <div class="input_container">
       <svg
         class="icon"
@@ -284,6 +290,12 @@
       >
     </div>
     <br />
+
+    @if (resetSuccess) {
+      <div>
+        <span class="green-text">Your password has been set successfully!</span>
+      </div>
+    }
 
     <div class="input_container">
       <svg

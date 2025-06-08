@@ -17,6 +17,11 @@
   margin-top: 1rem;
 }
 
-.reactionCounter{
-    transform: translate(2px,-3px);
+.reactionCounter {
+  transform: translate(2px, -3px);
+}
+
+.icon-love {
+  width: 1.5rem;
+  margin: 0.25rem;
 }
