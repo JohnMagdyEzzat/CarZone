@@ -4,7 +4,14 @@ export interface IComment {
   body: string;
   created_at: string;
   updated_at: string;
-  isEdit?:boolean;
+  isEdit?: boolean;
+  reactions_summary: {
+    like?: number;
+    love?: number;
+    haha?: number;
+    sad?: number;
+    angry?: number;
+  };
 }
 
 export interface ICommentCreation {

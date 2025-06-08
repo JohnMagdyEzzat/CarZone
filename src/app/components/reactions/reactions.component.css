@@ -1,0 +1,22 @@
+.icon {
+  background-color: transparent;
+}
+
+.normal {
+  width: 3rem;
+}
+
+.small {
+  width: 2rem;
+}
+
+.reaction-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.reactionCounter{
+    transform: translate(2px,-3px);
+}

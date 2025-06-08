@@ -1,10 +1,14 @@
 <div class="comments-container">
   <h2 class="heading">What Customers Says</h2>
-  <app-comments-cards [comments]="comments"></app-comments-cards>
+  <app-comments-cards
+    [comments]="comments"
+    (reactionChange)="getAllComments()"
+  ></app-comments-cards>
 
   <button class="btn add-comment-btn" (click)="onAddComment()">
     Add a comment
   </button>
+
   @if (addCommentWindow) {
   <div class="addCommentContainer">
     <div class="commentForm">

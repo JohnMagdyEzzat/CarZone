@@ -1,14 +1,30 @@
-import { Component, ElementRef, Input, viewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+  viewChild,
+} from '@angular/core';
 import { IComment } from '../../models/comment';
+import { ReactionsComponent } from '../reactions/reactions.component';
+import { reactionPayload } from '../../models/reaction';
+import { ReactionsService } from '../../services/reactions.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comments-cards',
-  imports: [],
+  imports: [ReactionsComponent],
   templateUrl: './comments-cards.component.html',
   styleUrl: './comments-cards.component.css',
 })
 export class CommentsCardsComponent {
   @Input({ required: true }) comments: IComment[] = [];
+  @Output() reactionChange: EventEmitter<void> = new EventEmitter();
+
+  reactionService = inject(ReactionsService);
+  router = inject(Router);
 
   commentCards = viewChild('commentCards');
 
@@ -75,5 +91,25 @@ export class CommentsCardsComponent {
       }
     }
     this.activeCircle = id;
+  }
+
+  submitReaction(commentId: number, reactionType: string): void {
+    if (localStorage.getItem('id')) {
+      const reactionPayload: reactionPayload = {
+        comment_id: commentId,
+        user_id: Number(localStorage.getItem('id')),
+        type: reactionType,
+      };
+      this.reactionService.postReaction(reactionPayload).subscribe({
+        next: () => {
+          this.reactionChange.emit();
+        },
+        error: () => {
+          console.log('Failed to submit the transaction');
+        },
+      });
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }
