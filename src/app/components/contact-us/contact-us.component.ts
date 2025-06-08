@@ -4,6 +4,7 @@ import { GoogleMapData } from '../../models/branch';
 import { BranchService } from '../../services/branch.service';
 import { tap } from 'rxjs';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -14,11 +15,13 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 export class ContactUsComponent implements OnInit {
   googleMapData: GoogleMapData[] = [];
   branchServices = inject(BranchService);
+  contactService = inject(ContactService);
+
   fb = inject(FormBuilder);
   emailForm = this.fb.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    inquiry: ['', [Validators.required]],
+    body: ['', [Validators.required]],
   });
   emailSentNotification = false;
   failToSendNotification = false;
@@ -42,12 +45,13 @@ export class ContactUsComponent implements OnInit {
 
     if (this.emailForm.valid) {
       console.log(this.emailForm.value);
+      this.contactService.sendEmail(this.emailForm.value).subscribe();
       this.emailSentNotification = true;
       this.emailForm.reset();
     } else {
-      console.error('nameErrors',this.emailForm.controls.name.errors);
-      console.error('emailErrors',this.emailForm.controls.email.errors);
-      console.error('inquiryErrors',this.emailForm.controls.inquiry.errors);
+      console.error('nameErrors', this.emailForm.controls.name.errors);
+      console.error('emailErrors', this.emailForm.controls.email.errors);
+      console.error('inquiryErrors', this.emailForm.controls.body.errors);
       this.failToSendNotification = true;
     }
   }

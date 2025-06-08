@@ -37,6 +37,7 @@
   position: relative;
   bottom: -11rem;
 }
+
 .email-box {
   display: flex;
   flex-direction: column;
