@@ -156,3 +156,14 @@
   align-items: center;
   margin: 2rem;
 }
+
+#toastBox {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px;
+}

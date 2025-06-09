@@ -30,14 +30,66 @@ body {
   align-items: baseline;
 }
 
-.jc-center{
+.jc-center {
   justify-content: center;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }
 
-.overflow-none{
+.overflow-none {
   overflow: hidden;
+}
+
+.toast {
+  width: 400px;
+  height: 80px;
+  background: #fff;
+  font-weight: 500;
+  margin: 15px 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  position: relative;
+  transform: translateX(100%);
+  animation: moveleft 2.3s linear forwards;
+}
+
+@keyframes moveleft {
+  5% {
+    transform: translateX(0);
+  }
+  90% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.toast svg {
+  width: 25px;
+  margin: 0 20px;
+}
+
+.toast::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background: green;
+  animation: anim 2s linear forwards;
+}
+
+.toast-error::after {
+  background-color: red;
+}
+
+@keyframes anim {
+  100% {
+    width: 0;
+  }
 }

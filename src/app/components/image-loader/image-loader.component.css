@@ -25,7 +25,7 @@
   position: absolute;
 }
 
-.loader-loaded{
+.loader-loaded {
   display: none;
 }
 
@@ -52,4 +52,16 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.unavailable {
+  background: url("/icons/Unavailable.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  right: -11px;
+  top: -11px;
+  transform: rotate(45deg);
 }

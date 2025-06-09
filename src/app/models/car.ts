@@ -25,6 +25,7 @@ export interface Car {
   safety: string;
   is_available: number;
   main_image: string;
+  deposit_amount: number;
   images: string[];
 }
 
@@ -58,6 +59,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'model-s.jpg',
     images: ['model-s-1.jpg', 'model-s-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 2,
@@ -87,6 +89,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'civic.jpg',
     images: ['civic-1.jpg', 'civic-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 3,
@@ -116,6 +119,7 @@ export const CARS: Car[] = [
     is_available: 0,
     main_image: 'corolla.jpg',
     images: ['corolla-1.jpg', 'corolla-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 4,
@@ -145,6 +149,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'mustang.jpg',
     images: ['mustang-1.jpg', 'mustang-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 5,
@@ -174,6 +179,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'camry.jpg',
     images: ['camry-1.jpg', 'camry-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 6,
@@ -203,6 +209,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'accord.jpg',
     images: ['accord-1.jpg', 'accord-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 7,
@@ -232,6 +239,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'a4.jpg',
     images: ['a4-1.jpg', 'a4-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 8,
@@ -261,6 +269,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: '3series.jpg',
     images: ['3series-1.jpg', '3series-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 9,
@@ -290,6 +299,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'cclass.jpg',
     images: ['cclass-1.jpg', 'cclass-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 10,
@@ -319,6 +329,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'altima.jpg',
     images: ['altima-1.jpg', 'altima-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 11,
@@ -348,6 +359,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'mazda3.jpg',
     images: ['mazda3-1.jpg', 'mazda3-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 12,
@@ -377,6 +389,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'impreza.jpg',
     images: ['impreza-1.jpg', 'impreza-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 13,
@@ -406,6 +419,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'golf.jpg',
     images: ['golf-1.jpg', 'golf-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 14,
@@ -435,6 +449,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'elantra.jpg',
     images: ['elantra-1.jpg', 'elantra-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 15,
@@ -464,6 +479,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'jetta.jpg',
     images: ['jetta-1.jpg', 'jetta-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 16,
@@ -493,6 +509,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'fusion.jpg',
     images: ['fusion-1.jpg', 'fusion-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 17,
@@ -522,6 +539,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'sonata.jpg',
     images: ['sonata-1.jpg', 'sonata-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 18,
@@ -551,6 +569,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'malibu.jpg',
     images: ['malibu-1.jpg', 'malibu-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 19,
@@ -580,6 +599,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'passat.jpg',
     images: ['passat-1.jpg', 'passat-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 20,
@@ -609,6 +629,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'sentra.jpg',
     images: ['sentra-1.jpg', 'sentra-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 21,
@@ -638,6 +659,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'prius.jpg',
     images: ['prius-1.jpg', 'prius-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 22,
@@ -667,6 +689,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'focus.jpg',
     images: ['focus-1.jpg', 'focus-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 23,
@@ -696,6 +719,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'rio.jpg',
     images: ['rio-1.jpg', 'rio-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 24,
@@ -725,6 +749,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'yaris.jpg',
     images: ['yaris-1.jpg', 'yaris-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 25,
@@ -754,6 +779,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'fiesta.jpg',
     images: ['fiesta-1.jpg', 'fiesta-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 26,
@@ -783,6 +809,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'spark.jpg',
     images: ['spark-1.jpg', 'spark-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 27,
@@ -812,6 +839,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'a3.jpg',
     images: ['a3-1.jpg', 'a3-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 28,
@@ -841,6 +869,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'cla.jpg',
     images: ['cla-1.jpg', 'cla-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 29,
@@ -870,6 +899,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'qashqai.jpg',
     images: ['qashqai-1.jpg', 'qashqai-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 30,
@@ -899,6 +929,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'cx5.jpg',
     images: ['cx5-1.jpg', 'cx5-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 31,
@@ -928,6 +959,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'tucson.jpg',
     images: ['tucson-1.jpg', 'tucson-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 32,
@@ -957,6 +989,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'crv.jpg',
     images: ['crv-1.jpg', 'crv-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 33,
@@ -986,6 +1019,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'rav4.jpg',
     images: ['rav4-1.jpg', 'rav4-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 34,
@@ -1015,6 +1049,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'escape.jpg',
     images: ['escape-1.jpg', 'escape-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 35,
@@ -1044,6 +1079,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'kona.jpg',
     images: ['kona-1.jpg', 'kona-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 36,
@@ -1073,6 +1109,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'cx30.jpg',
     images: ['cx30-1.jpg', 'cx30-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 37,
@@ -1102,6 +1139,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'sportage.jpg',
     images: ['sportage-1.jpg', 'sportage-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 38,
@@ -1131,6 +1169,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'rogue.jpg',
     images: ['rogue-1.jpg', 'rogue-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 39,
@@ -1160,6 +1199,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'forester.jpg',
     images: ['forester-1.jpg', 'forester-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 40,
@@ -1189,6 +1229,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'outback.jpg',
     images: ['outback-1.jpg', 'outback-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 41,
@@ -1218,6 +1259,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'x1.jpg',
     images: ['x1-1.jpg', 'x1-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 42,
@@ -1247,6 +1289,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'gla.jpg',
     images: ['gla-1.jpg', 'gla-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 43,
@@ -1276,6 +1319,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'q3.jpg',
     images: ['q3-1.jpg', 'q3-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 44,
@@ -1305,6 +1349,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'xc40.jpg',
     images: ['xc40-1.jpg', 'xc40-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 45,
@@ -1334,6 +1379,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'troc.jpg',
     images: ['troc-1.jpg', 'troc-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 46,
@@ -1363,6 +1409,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'hrv.jpg',
     images: ['hrv-1.jpg', 'hrv-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 47,
@@ -1392,6 +1439,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'kicks.jpg',
     images: ['kicks-1.jpg', 'kicks-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 48,
@@ -1421,6 +1469,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'ecosport.jpg',
     images: ['ecosport-1.jpg', 'ecosport-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 49,
@@ -1450,6 +1499,7 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'venue.jpg',
     images: ['venue-1.jpg', 'venue-2.jpg'],
+    deposit_amount: 100,
   },
   {
     id: 50,
@@ -1479,5 +1529,6 @@ export const CARS: Car[] = [
     is_available: 1,
     main_image: 'seltos.jpg',
     images: ['seltos-1.jpg', 'seltos-2.jpg'],
+    deposit_amount: 100,
   },
 ];

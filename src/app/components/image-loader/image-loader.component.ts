@@ -11,6 +11,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ImageLoaderComponent implements OnInit {
   @Input({ required: true }) imageSource: any;
   @Input({ required: true }) carModel!: string;
+  @Input() unavailable: number = 0;
 
   isLoaded = false;
 
