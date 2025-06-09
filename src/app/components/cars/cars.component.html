@@ -5,27 +5,39 @@
     <div class="flex baseline paggination-container">
       <div class="flex paggination">
         <p>Show :</p>
-        <span class="pageNo">5</span><span>/</span>
-        <span class="pageNo">10</span><span>/</span>
-        <span class="pageNo">15</span><span>/</span>
-        <span class="pageNo">20</span>
+        <span (click)="paginate(5, true)" class="pageNo">5</span><span>/</span>
+        <span (click)="paginate(10, true)" class="pageNo">10</span
+        ><span>/</span>
+        <span (click)="paginate(15, true)" class="pageNo">15</span
+        ><span>/</span>
+        <span (click)="paginate(20, true)" class="pageNo">20</span>
       </div>
 
       <div class="paste-button">
         <button class="button">Sort &nbsp; ▼</button>
         <div class="dropdown-content">
-          <a id="top" href="#">Default sorting</a>
-          <a id="middle" href="#">Sort by model</a>
-          <a id="middle" href="#">Sort by year</a>
-          <a id="middle" href="#">Sort by price: low to high</a>
-          <a id="bottom" href="#">Sort by price: high to low</a>
+          <a class="dropdown-item" id="top" (click)="sortCars('Default')"
+            >Default sorting</a
+          >
+          <a class="dropdown-item" id="middle" (click)="sortCars('Model')"
+            >Sort by model</a
+          >
+          <a class="dropdown-item" id="middle" (click)="sortCars('Year')"
+            >Sort by year</a
+          >
+          <a class="dropdown-item" id="middle" (click)="sortCars('PriceLTH')"
+            >Sort by price: low to high</a
+          >
+          <a class="dropdown-item" id="bottom" (click)="sortCars('PriceHTL')"
+            >Sort by price: high to low</a
+          >
         </div>
       </div>
     </div>
   </div>
-  <hr>
+  <hr />
   <div class="car-card-container">
-    @for (car of cars; track car.id) {
+    @for (car of paginatedCars; track car.id) {
     <div class="car-card">
       <app-image-loader
         [imageSource]="car.main_image"
@@ -51,6 +63,18 @@
         <a [routerLink]="car.id.toString()" class="button-link">More Details</a>
       </div>
     </div>
+    }
+  </div>
+
+  <div class="paginator">
+    @for (pageNo of totalPagesArr; track $index) {
+    <span
+      (click)="changePage(pageNo)"
+      [ngClass]="{ pageNo: true, pageNoActive: pageNo === currentPage }"
+    >
+      {{ pageNo }}
+    </span>
+    <span class="paginator-splitter">/</span>
     }
   </div>
 </div>
