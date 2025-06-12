@@ -82,6 +82,7 @@ footer {
 
 .fa-brands:hover {
   color: rgb(1, 210, 142);
+  transition: 0.3s;
 }
 
 .footer-contact .link {
@@ -89,10 +90,12 @@ footer {
   color: white;
   cursor: pointer;
 }
-.footer-contact .link:hover {
+.footer-contact .link:hover,
+.footer-links ul .link:hover {
   color: rgb(1, 210, 142);
+  transition: 0.3s;
 }
 
-.footer-links ul li{
+.footer-links ul li {
   margin-top: 10px;
 }

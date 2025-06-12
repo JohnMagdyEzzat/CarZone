@@ -85,9 +85,11 @@ export class UserProfileComponent implements OnInit {
       next: (res) => {
         this.user = this.authService.currentUserSig();
         this.cars = res.data.filter((car) => {
-          return car.user_id === this.authService.currentUserSig()?.id;
+          return car.booking_user?.id === this.authService.currentUserSig()?.id;
         });
-      }
+        
+        console.log({ cars: this.cars  })
+      },
     });
   }
 

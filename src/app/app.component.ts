@@ -5,12 +5,12 @@ import {
   inject,
   OnDestroy,
 } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { SpinnerService } from './services/spinner.service';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from "./components/footer/footer.component";
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +22,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   title = 'CarZone';
   spinnerServices = inject(SpinnerService);
   cdref = inject(ChangeDetectorRef);
+  router = inject(Router);
+
   showSpinner = false;
   spinnerCounterSub!: Subscription;
 

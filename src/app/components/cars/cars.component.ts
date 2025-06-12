@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { Car, CARS } from '../../models/car';
+import { Car } from '../../models/car';
 import { map, Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { ImageLoaderComponent } from '../image-loader/image-loader.component';
