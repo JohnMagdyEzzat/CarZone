@@ -2,7 +2,8 @@
   <h2 class="heading">What Customers Says</h2>
   <app-comments-cards
     [comments]="comments"
-    (reactionChange)="getAllComments()"
+    [userReactions]="userReactions"
+    (reactionChange)="getAllComments(); getAllReactions()"
   ></app-comments-cards>
 
   <button class="btn add-comment-btn" (click)="onAddComment()">

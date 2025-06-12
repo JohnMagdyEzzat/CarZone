@@ -4,12 +4,13 @@ import { map, Subscription } from 'rxjs';
 import { CarService } from '../../services/car.service';
 import { ImageLoaderComponent } from '../image-loader/image-loader.component';
 import { RouterLink } from '@angular/router';
+import { EgpCurrencyPipe } from "../../pipes/egp-currency.pipe";
 
 @Component({
   selector: 'app-top-cars',
   templateUrl: './top-cars.component.html',
   styleUrls: ['./top-cars.component.css'],
-  imports: [ImageLoaderComponent, RouterLink],
+  imports: [ImageLoaderComponent, RouterLink, EgpCurrencyPipe],
 })
 export class TopCarsComponent implements OnInit {
   cars: Car[] = [];

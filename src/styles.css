@@ -52,7 +52,7 @@ body {
   display: flex;
   align-items: center;
   position: relative;
-  transform: translateX(100%);
+  transform: translateX(110%);
   animation: moveleft 2.3s linear forwards;
 }
 
@@ -64,7 +64,7 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(110%);
   }
 }
 
@@ -92,4 +92,19 @@ body {
   100% {
     width: 0;
   }
+}
+
+.full-width{
+  width: 100%;
+}
+
+#toastBox {
+  position: fixed;
+  bottom: 30px;
+  right: 0px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px;
 }

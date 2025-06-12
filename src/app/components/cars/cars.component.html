@@ -56,12 +56,12 @@
           doors: <span class="underlined bold">{{ car.doors }}</span>
         </p>
         <p>
-          Price: <span class="underlined bold">{{ car.price }} EGP</span>
+          Price: <span class="underlined bold">{{ car.price | egpCurrency  }}</span>
         </p>
       </div>
 
       <div class="car-card-buttons">
-        <a (click)="pay(car)" class="button-link">Book</a>
+        <app-stripe class="full-width" title="Book" [car]="car"></app-stripe>
         <a [routerLink]="car.id.toString()" class="button-link">More Details</a>
       </div>
     </div>

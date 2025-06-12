@@ -1,6 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
-import { ReactionsService } from '../../services/reactions.service';
-import { reactionPayload } from '../../models/reaction';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-reactions',

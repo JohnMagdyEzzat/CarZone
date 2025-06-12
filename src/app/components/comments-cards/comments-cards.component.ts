@@ -10,8 +10,10 @@ import {
 import { IComment } from '../../models/comment';
 import { ReactionsComponent } from '../reactions/reactions.component';
 import { reactionPayload } from '../../models/reaction';
-import { ReactionsService } from '../../services/reactions.service';
 import { Router } from '@angular/router';
+import { IReaction } from '../../models/reacts';
+import { ReactionService } from '../../services/reaction.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-comments-cards',
@@ -21,9 +23,10 @@ import { Router } from '@angular/router';
 })
 export class CommentsCardsComponent {
   @Input({ required: true }) comments: IComment[] = [];
+  @Input({ required: true }) userReactions: IReaction[] = [];
   @Output() reactionChange: EventEmitter<void> = new EventEmitter();
 
-  reactionService = inject(ReactionsService);
+  reactionService = inject(ReactionService);
   router = inject(Router);
 
   commentCards = viewChild('commentCards');
@@ -94,20 +97,45 @@ export class CommentsCardsComponent {
   }
 
   submitReaction(commentId: number, reactionType: string): void {
-    if (localStorage.getItem('id')) {
+    const userId = localStorage.getItem('id');
+    if (userId) {
       const reactionPayload: reactionPayload = {
         comment_id: commentId,
-        user_id: Number(localStorage.getItem('id')),
+        user_id: Number(userId),
         type: reactionType,
       };
-      this.reactionService.postReaction(reactionPayload).subscribe({
-        next: () => {
-          this.reactionChange.emit();
-        },
-        error: () => {
-          console.log('Failed to submit the transaction');
-        },
+      let reactionIndex = -1;
+      const reaction = this.userReactions.find((reaction, index) => {
+        reactionIndex = index;
+        return reaction.comment_id === commentId;
       });
+
+      if (reactionIndex !== -1 && reaction) {
+        this.reactionService
+          .removeReactionById(reaction.id, Number(userId))
+          .pipe(
+            tap(() => {
+              this.reactionService.postReaction(reactionPayload).subscribe({
+                next: () => {
+                  this.reactionChange.emit();
+                },
+                error: () => {
+                  console.log('Failed to submit the transaction');
+                },
+              });
+            })
+          )
+          .subscribe();
+      } else {
+        this.reactionService.postReaction(reactionPayload).subscribe({
+          next: () => {
+            this.reactionChange.emit();
+          },
+          error: () => {
+            console.log('Failed to submit the transaction');
+          },
+        });
+      }
     } else {
       this.router.navigate(['/login']);
     }

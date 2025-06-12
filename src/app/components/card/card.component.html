@@ -17,7 +17,7 @@
       doors: <span class="underlined bold">{{ car.doors }}</span>
     </p>
     <p>
-      Price: <span class="underlined bold">{{ car.price }} EGP</span>
+      Price: <span class="underlined bold">{{ car.price | egpCurrency }}</span>
     </p>
   </div>
   <div class="car-card-buttons">

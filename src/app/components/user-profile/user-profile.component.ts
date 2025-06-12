@@ -19,6 +19,8 @@ import { Router } from '@angular/router';
 import { CommentService } from '../../services/comment.service';
 import { tap } from 'rxjs';
 import { IComment } from '../../models/comment';
+import { CarService } from '../../services/car.service';
+import { Car } from '../../models/car';
 
 @Component({
   selector: 'app-user-profile',
@@ -32,8 +34,10 @@ export class UserProfileComponent implements OnInit {
   router = inject(Router);
   fb = inject(FormBuilder);
   commentService = inject(CommentService);
+  carService = inject(CarService);
 
   comments: IComment[] = [];
+  cars: Car[] = [];
   user?: User | null;
   editBtnTitle: string = 'Edit Profile';
   editMode: boolean = false;
@@ -50,12 +54,14 @@ export class UserProfileComponent implements OnInit {
   commentsFormGroup = this.fb.group({
     comments: this.fb.array([]),
   });
+
   get commentsFormArray() {
     return this.commentsFormGroup.get('comments') as FormArray;
   }
 
   ngOnInit(): void {
     this.getAllComments();
+    this.getUserBookedCars();
   }
 
   getAllComments(): void {
@@ -72,6 +78,17 @@ export class UserProfileComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  getUserBookedCars(): void {
+    this.carService.getCars().subscribe({
+      next: (res) => {
+        this.user = this.authService.currentUserSig();
+        this.cars = res.data.filter((car) => {
+          return car.user_id === this.authService.currentUserSig()?.id;
+        });
+      }
+    });
   }
 
   initializeCommentsFormArray() {

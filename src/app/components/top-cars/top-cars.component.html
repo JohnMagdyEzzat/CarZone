@@ -1,7 +1,5 @@
 <div class="cars-container">
-  <h2 class="heading">
-    Our Top Cars
-  </h2>
+  <h2 class="heading">Our Top Cars</h2>
   <div class="car-card-container">
     @for (car of cars; track car.id) {
     <div class="car-card">
@@ -21,12 +19,15 @@
           doors: <span class="underlined bold">{{ car.doors }}</span>
         </p>
         <p>
-          Price: <span class="underlined bold">{{ car.price }} EGP</span>
+          Price:
+          <span class="underlined bold">{{ car.price | egpCurrency }}</span>
         </p>
       </div>
       <div class="car-card-buttons">
         <a routerLink="/soon" class="button-link">Book</a>
-        <a [routerLink]="'/cars/'+car.id.toString()" class="button-link">More Details</a>
+        <a [routerLink]="'/cars/' + car.id.toString()" class="button-link"
+          >More Details</a
+        >
       </div>
     </div>
     }

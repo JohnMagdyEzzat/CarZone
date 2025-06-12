@@ -1,0 +1,29 @@
+.about-container {
+  padding-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10rem;
+}
+
+.section{
+    width: 70%;
+    display: flex;
+}
+
+.feature-list {
+  list-style-type: none;
+  width: 100%;
+}
+
+.feature-list li {
+  width: 100%;
+  height: 50vh;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

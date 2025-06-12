@@ -5,6 +5,9 @@ import { IComment, ICommentCreation } from '../../models/comment';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommentsCardsComponent } from '../comments-cards/comments-cards.component';
+import { ReactionService } from '../../services/reaction.service';
+import { IReaction } from '../../models/reacts';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-comments',
@@ -13,17 +16,22 @@ import { CommentsCardsComponent } from '../comments-cards/comments-cards.compone
   styleUrl: './comments.component.css',
 })
 export class CommentsComponent implements OnInit, OnDestroy {
-  comments: IComment[] = [];
   commentService = inject(CommentService);
+  reactionService = inject(ReactionService);
   router = inject(Router);
+  authService = inject(AuthService);
+
+  comments: IComment[] = [];
   commentsSubscription: Subscription = new Subscription();
   addCommentWindow = false;
   commentAddedSuccess = false;
   commentAddedError = false;
   userComment = '';
+  userReactions: IReaction[] = [];
 
   ngOnInit(): void {
     this.getAllComments();
+    this.getAllReactions();
   }
 
   getAllComments(): void {
@@ -37,6 +45,22 @@ export class CommentsComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
+  getAllReactions(): void {
+    this.userReactions = [];
+    this.reactionService
+      .getAllReactions()
+      .pipe(
+        tap((allReactions) => {
+          allReactions.forEach((reaction) => {
+            if (reaction.user_id === this.authService.currentUserSig()?.id) {
+              this.userReactions.push(reaction);
+            }
+          });
+        })
+      )
+      .subscribe();
+  }
+
   onAddComment(): void {
     const userLogged = localStorage.getItem('id') || '';
     if (userLogged !== '') {
@@ -45,6 +69,7 @@ export class CommentsComponent implements OnInit, OnDestroy {
       this.router.navigate(['/login']);
     }
   }
+
   onCancelComment(): void {
     this.addCommentWindow = false;
   }

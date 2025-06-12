@@ -45,18 +45,13 @@
   </div>
 
   <div class="car-details-content">
-    <!-- <app-image-loader
-      [imageSource]="car?.main_image"
-      [carModel]="car?.model || '-'"
-      class="car-details-img"
-    ></app-image-loader> -->
-    <app-image-gallery [images]="car?.images || []"></app-image-gallery>
+    <app-image-gallery [images]="car.images || []"></app-image-gallery>
 
     <div class="car-details-info">
       <div>
-        <h3>{{ car?.model || "-" }} ({{ car?.year }})</h3>
+        <h3>{{ car.model || "-" }} ({{ car.year }})</h3>
         <h3>
-          {{ (car?.price | egpCurrency) || "-" }}
+          {{ (car.price | egpCurrency) || "-" }}
         </h3>
       </div>
       <div class="car-details-body">
@@ -65,99 +60,85 @@
           <table>
             <tr>
               <td>Year</td>
-              <td>{{ car?.year || "-" }}</td>
+              <td>{{ car.year || "-" }}</td>
             </tr>
             <tr>
               <td>Doors</td>
-              <td>{{ car?.doors || "-" }}</td>
+              <td>{{ car.doors || "-" }}</td>
             </tr>
             <tr>
               <td>Price</td>
-              <td>{{ car?.price || "-" }} EGP</td>
+              <td>{{ car.price | egpCurrency }}</td>
             </tr>
             <tr>
               <td>Acceleration</td>
-              <td>{{ car?.acceleration || "-" }}</td>
+              <td>{{ car.acceleration || "-" }}</td>
             </tr>
             <tr>
               <td>Engine Cylinder</td>
-              <td>{{ car?.engine_cylinder || "-" }}</td>
+              <td>{{ car.engine_cylinder || "-" }}</td>
             </tr>
             <tr>
               <td>Engine Power</td>
-              <td>{{ car?.engine_power || "-" }}</td>
+              <td>{{ car.engine_power || "-" }}</td>
             </tr>
             <tr>
               <td>Engine Cubic Capacity Type</td>
-              <td>{{ car?.engine_cubic_capacity_type || "-" }}</td>
+              <td>{{ car.engine_cubic_capacity_type || "-" }}</td>
             </tr>
             <tr>
               <td>Fuel Efficiency</td>
-              <td>{{ car?.fuel_efficiency || "-" }}</td>
+              <td>{{ car.fuel_efficiency || "-" }}</td>
             </tr>
             <tr>
               <td>Top Speed</td>
-              <td>{{ car?.top_speed || "-" }}</td>
+              <td>{{ car.top_speed || "-" }}</td>
             </tr>
             <tr>
               <td>Color</td>
-              <td>{{ car?.color || "-" }}</td>
+              <td>{{ car.color || "-" }}</td>
             </tr>
             <tr>
               <td>Transmission</td>
-              <td>{{ car?.transmission || "-" }}</td>
+              <td>{{ car.transmission || "-" }}</td>
             </tr>
             <tr>
               <td>Engine Type</td>
-              <td>{{ car?.engine_type || "-" }}</td>
+              <td>{{ car.engine_type || "-" }}</td>
             </tr>
             <tr>
               <td>Features</td>
-              <td>{{ car?.features || "-" }}</td>
+              <td>{{ car.features || "-" }}</td>
             </tr>
 
             <tr>
               <td>Performance</td>
-              <td>{{ car?.performance || "-" }}</td>
+              <td>{{ car.performance || "-" }}</td>
             </tr>
             <tr>
               <td>Safety</td>
-              <td>{{ car?.safety || "-" }}</td>
+              <td>{{ car.safety || "-" }}</td>
             </tr>
             <tr>
               <td>Available</td>
-              <td>{{ car?.is_available ? "Available" : "Not Available" }}</td>
-            </tr>
-            <tr>
-              <td>Booked</td>
-              <td>{{ car?.is_booked ? "Booked" : "Available" }}</td>
-            </tr>
-            <tr>
-              <td>Sold</td>
-              <td>{{ car?.is_sold ? "Sold" : "Available" }}</td>
+              <td>{{ car.is_available ? "Available" : "Not Available" }}</td>
             </tr>
           </table>
         </div>
       </div>
     </div>
   </div>
+
   <div class="purchase-button">
-    <button
-      class="button"
-      (click)="purchaseCar()"
-      [disabled]="car?.is_booked || car?.is_sold || !car?.is_available"
-      [ngClass]="{
-        'button-disabled': car?.is_booked || car?.is_sold || !car?.is_available
-      }"
-    >
-      Purchase
-    </button>
-    @if (car?.is_booked) {
+    <app-stripe title="Book car" [car]="car"></app-stripe>
+    @if (car.is_booked) {
     <div class="status-message">This car is already booked.</div>
-    } @if (car?.is_sold) {
+    } @if (car.is_sold) {
     <div class="status-message">This car is already sold.</div>
-    } @if (!car?.is_available) {
+    } @if (!car.is_available) {
     <div class="status-message">This car is not available for purchase.</div>
     }
   </div>
+
+  <div id="toastBox"></div>
 </div>

@@ -49,34 +49,46 @@
       <h2>User actions</h2>
       <button (click)="toggleEditProfile()">{{ editBtnTitle }}</button>
       <button (click)="logout()">Logout</button>
-  </div>
+    </div>
 
-  <div class="profile-comments" [formGroup]="commentsFormGroup">
-    <div class="container" formArrayName="comments">
-      <h2>Comments</h2>
-      @for (comment of comments; track $index;let i=$index) {
-      <div class="comment-card">
-        @if (comment.isEdit) {
-        <input
-          class="comment-card-input"
-          type="text"
-          id="comment {{ i }}"
-          [value]="comment.body"
-          [formControlName]="i"
-        />
-        }@else {
-        <p>{{ comment.body }}</p>
-        }
-        <div class="btn-container">
-          <button class="btn" (click)="editComment(comment, i)">
-            @if (comment.isEdit) { Save }@else { Edit }
-          </button>
-          <button class="btn-delete" (click)="deleteComment(comment)">
-            Delete
-          </button>
+    <div class="profile-comments" [formGroup]="commentsFormGroup">
+      <div class="container" formArrayName="comments">
+        <h2>Comments</h2>
+        @for (comment of comments; track $index;let i=$index) {
+        <div class="comment-card">
+          @if (comment.isEdit) {
+          <input
+            class="comment-card-input"
+            type="text"
+            id="comment {{ i }}"
+            [value]="comment.body"
+            [formControlName]="i"
+          />
+          }@else {
+          <p>{{ comment.body }}</p>
+          }
+          <div class="btn-container">
+            <button class="btn" (click)="editComment(comment, i)">
+              @if (comment.isEdit) { Save }@else { Edit }
+            </button>
+            <button class="btn-delete" (click)="deleteComment(comment)">
+              Delete
+            </button>
+          </div>
         </div>
+        }
       </div>
-      }
+    </div>
+
+    <div class="profile-comments">
+      <div class="container">
+        <h2>Booked cars</h2>
+        @for (car of cars; track $index;let i=$index) {
+        <div class="comment-card">
+          <p>{{ car.model }} ({{ car.year }})</p>
+        </div>
+        }
+      </div>
     </div>
   </div>
 </div>
