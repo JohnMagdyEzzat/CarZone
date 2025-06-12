@@ -1,5 +1,5 @@
 .eventsContainer {
-  padding-top: 7em;
+  padding: 7em 0;
   display: flex;
   justify-content: center;
   flex-direction: column;

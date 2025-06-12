@@ -72,6 +72,12 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
+  scrollToTop(): void {
+    window.scroll({
+      top: 0,
+    });
+  }
+
   get payload() {
     return {
       email: this.authService.currentUserSig()?.email || '',

@@ -16,4 +16,11 @@ export class FooterComponent {
   faFacebook = faFacebook;
   faInstagram = faInstagram;
   faTwitter = faTwitter;
+
+  scrollToTop():void {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
 }
