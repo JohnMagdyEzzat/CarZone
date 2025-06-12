@@ -47,8 +47,8 @@
   <div class="profile-actions">
     <div class="container">
       <h2>User actions</h2>
-      <button (click)="toggleEditProfile()">{{ editBtnTitle }}</button>
-      <button (click)="logout()">Logout</button>
+      <button class="user-action-btn" (click)="toggleEditProfile()">{{ editBtnTitle }}</button>
+      <button class="user-action-btn" (click)="logout()">Logout</button>
     </div>
 
     <div class="profile-comments" [formGroup]="commentsFormGroup">

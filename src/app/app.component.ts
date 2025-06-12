@@ -10,10 +10,11 @@ import { SpinnerService } from './services/spinner.service';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from "./components/footer/footer.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, CommonModule],
+  imports: [RouterOutlet, NavbarComponent, CommonModule, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
