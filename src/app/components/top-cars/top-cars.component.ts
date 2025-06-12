@@ -5,12 +5,13 @@ import { CarService } from '../../services/car.service';
 import { ImageLoaderComponent } from '../image-loader/image-loader.component';
 import { RouterLink } from '@angular/router';
 import { EgpCurrencyPipe } from "../../pipes/egp-currency.pipe";
+import { StripeComponent } from "../stripe/stripe.component";
 
 @Component({
   selector: 'app-top-cars',
   templateUrl: './top-cars.component.html',
   styleUrls: ['./top-cars.component.css'],
-  imports: [ImageLoaderComponent, RouterLink, EgpCurrencyPipe],
+  imports: [ImageLoaderComponent, RouterLink, EgpCurrencyPipe, StripeComponent],
 })
 export class TopCarsComponent implements OnInit {
   cars: Car[] = [];

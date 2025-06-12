@@ -24,8 +24,8 @@
         </p>
       </div>
       <div class="car-card-buttons">
-        <a routerLink="/soon" class="button-link">Book</a>
-        <a [routerLink]="'/cars/' + car.id.toString()" class="button-link"
+        <app-stripe class="full-width" title="Book Now" [car]="car"></app-stripe>
+        <a [routerLink]="'/allcars/' + car.id.toString()" class="button-link"
           >More Details</a
         >
       </div>

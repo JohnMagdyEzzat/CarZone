@@ -54,7 +54,7 @@
 }
 
 .unavailable {
-  background: url("/icons/Unavailable.png");
+  background: url("/cars/Unavicon.png");
   background-size: contain;
   background-repeat: no-repeat;
   width: 150px;

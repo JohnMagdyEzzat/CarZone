@@ -34,7 +34,7 @@ export class CarDetailsComponent implements OnInit {
         this.car = car.data;
       },
       error: () => {
-        this.router.navigate(['/cars']);
+        this.router.navigate(['/allcars']);
       },
     });
   }
