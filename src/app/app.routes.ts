@@ -16,7 +16,7 @@ export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
   { path: 'register', component: RegisterComponent },
-  { path: 'about', component: AboutComponent },
+  { path: 'aboutus', component: AboutComponent },
   { path: 'services', component: ServicesComponent },
   { path: 'allcars', component: CarsComponent },
   { path: 'allcars/:carId', component: CarDetailsComponent },
