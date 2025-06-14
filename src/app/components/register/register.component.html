@@ -105,32 +105,44 @@
         ></path>
       </svg>
       <div [formGroup]="passwordGroup" class="flex split_fields_container">
-        <input
-          placeholder="Password"
-          title="Password"
-          formControlName="password"
-          type="password"
-          class="input_field first_split_field"
-          [class.error]="
-            (passwordGroup.get('password')?.invalid ||
-              registerForm.get('passwordGroup')?.invalid) &&
-            passwordGroup.get('password')?.touched
-          "
-          id="password_field"
-        />
-        <input
-          placeholder="Confirm password"
-          title="Confirm password"
-          formControlName="confirmPassword"
-          type="password"
-          class="input_field second_split_field"
-          [class.error]="
-            (passwordGroup.get('confirmPassword')?.invalid ||
-              registerForm.get('passwordGroup')?.invalid) &&
-            passwordGroup.get('confirmPassword')?.touched
-          "
-          id="confirm_password_field"
-        />
+        <span class="password-input-container">
+          <input
+            #passwordField
+            placeholder="Password"
+            title="Password"
+            formControlName="password"
+            type="password"
+            class="input_field first_split_field"
+            [class.error]="
+              (passwordGroup.get('password')?.invalid ||
+                registerForm.get('passwordGroup')?.invalid) &&
+              passwordGroup.get('password')?.touched
+            "
+            id="password_field"
+          />
+          <app-password-reveal
+            [passwordField]="passwordField"
+          ></app-password-reveal>
+        </span>
+        <span class="password-input-container">
+          <input
+            #confirmPasswordField
+            placeholder="Confirm password"
+            title="Confirm password"
+            formControlName="confirmPassword"
+            type="password"
+            class="input_field second_split_field"
+            [class.error]="
+              (passwordGroup.get('confirmPassword')?.invalid ||
+                registerForm.get('passwordGroup')?.invalid) &&
+              passwordGroup.get('confirmPassword')?.touched
+            "
+            id="confirm_password_field"
+          />
+          <app-password-reveal
+            [passwordField]="confirmPasswordField"
+          ></app-password-reveal>
+        </span>
       </div>
     </div>
     <div class="input_container">

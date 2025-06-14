@@ -26,6 +26,7 @@ export class StripeComponent implements OnInit {
   bookCar() {
     if (!localStorage.getItem('id')) {
       this.router.navigate(['/login']);
+      return;
     }
 
     const amount = this.car.deposit_amount;

@@ -16,7 +16,7 @@
         height="24"
         width="24"
         xmlns="http://www.w3.org/2000/svg"
-        class="icon"
+        class="icon normal-icon"
       >
         <path
           stroke-linejoin="round"
@@ -93,7 +93,7 @@
 
     <div class="input_container">
       <svg
-        class="icon"
+        class="icon normal-icon"
         viewBox="0 0 48 48"
         xmlns="http://www.w3.org/2000/svg"
         fill="#000000"
@@ -158,7 +158,7 @@
         height="24"
         width="24"
         xmlns="http://www.w3.org/2000/svg"
-        class="icon"
+        class="icon normal-icon"
       >
         <path
           stroke-linecap="round"
@@ -179,6 +179,7 @@
         ></path>
       </svg>
       <input
+        #resetPasswordField
         placeholder="Password"
         title="Password"
         formControlName="password"
@@ -189,11 +190,14 @@
             resetPasswordForm.controls.password.errors &&
             resetPasswordForm.touched
         }"
-        id="password_field"
+        id="reset_password_field"
         (input)="
           resetPasswordForm.controls.confirmPassword.updateValueAndValidity()
         "
       />
+      <app-password-reveal
+        [passwordField]="resetPasswordField"
+      ></app-password-reveal>
     </div>
     <div class="input_error">
       @if (!resetPasswordForm.valid && resetPasswordForm.touched) {
@@ -215,7 +219,7 @@
         height="24"
         width="24"
         xmlns="http://www.w3.org/2000/svg"
-        class="icon"
+        class="icon normal-icon"
       >
         <path
           stroke-linecap="round"
@@ -236,6 +240,7 @@
         ></path>
       </svg>
       <input
+        #confirmResetPasswordField
         placeholder="Confirm Password"
         title="Confirm Password"
         formControlName="confirmPassword"
@@ -246,8 +251,11 @@
             resetPasswordForm.controls.confirmPassword.errors &&
             resetPasswordForm.touched
         }"
-        id="confirm_Password_field"
+        id="confirm_reset_password_field"
       />
+      <app-password-reveal
+        [passwordField]="confirmResetPasswordField"
+      ></app-password-reveal>
     </div>
     <div class="input_error">
       @if (!resetPasswordForm.valid && resetPasswordForm.touched) {
@@ -308,7 +316,7 @@
         height="24"
         width="24"
         xmlns="http://www.w3.org/2000/svg"
-        class="icon"
+        class="icon normal-icon"
       >
         <path
           stroke-linejoin="round"
@@ -340,7 +348,7 @@
         height="24"
         width="24"
         xmlns="http://www.w3.org/2000/svg"
-        class="icon"
+        class="icon normal-icon"
       >
         <path
           stroke-linecap="round"
@@ -361,6 +369,7 @@
         ></path>
       </svg>
       <input
+        #passwordField
         placeholder="Password"
         title="Password"
         formControlName="password"
@@ -368,6 +377,9 @@
         class="input_field"
         id="password_field"
       />
+      <app-password-reveal
+        [passwordField]="passwordField"
+      ></app-password-reveal>
     </div>
 
     <button

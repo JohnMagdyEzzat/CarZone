@@ -53,14 +53,17 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  justify-content: center;
 }
 
 .icon {
   width: 20px;
   position: absolute;
   z-index: 999;
+}
+
+.normal-icon {
   left: 12px;
-  bottom: 9px;
 }
 
 .button-icon {
@@ -95,6 +98,7 @@
   outline: none;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+  user-select: none;
 }
 
 .sign-in_btn {

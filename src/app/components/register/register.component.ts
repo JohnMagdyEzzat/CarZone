@@ -12,10 +12,11 @@ import { FormErrorsComponent } from '../form-errors/form-errors.component';
 import { FormService } from '../../services/form.service';
 import { tap } from 'rxjs';
 import { LoginService } from '../../services/login.service';
+import { PasswordRevealComponent } from "../password-reveal/password-reveal.component";
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, RouterLink, FormErrorsComponent],
+  imports: [ReactiveFormsModule, RouterLink, FormErrorsComponent, PasswordRevealComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })

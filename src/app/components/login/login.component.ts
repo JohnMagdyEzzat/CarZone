@@ -22,12 +22,13 @@ import {
 import { AuthValidators } from '../../validators/auth.validators';
 import { LoginValidators } from '../../validators/login.validators';
 import { CommonModule } from '@angular/common';
+import { PasswordRevealComponent } from "../password-reveal/password-reveal.component";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  imports: [ReactiveFormsModule, FontAwesomeModule, RouterLink, CommonModule],
+  imports: [ReactiveFormsModule, FontAwesomeModule, RouterLink, CommonModule, PasswordRevealComponent],
 })
 export class LoginComponent implements OnInit {
   private fb = inject(FormBuilder);
